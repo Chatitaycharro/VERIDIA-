@@ -10,6 +10,7 @@
   "logs:readonly": { "provider": "observability", "scope": "logs:read" },
   "agent_tasks": { "provider": "veridia", "scope": "agent_tasks:write" },
   "issues/drafts": { "provider": "github", "scope": "issues:write", "constraint": "draft_only" },
+  "docs/drafts": { "provider": "repository", "scope": "contents:write", "constraint": "docs_drafts_only" },
   "designs/drafts": { "provider": "veridia", "scope": "designs:write", "constraint": "draft_only" },
   "branches/feature/*": { "provider": "github", "scope": "contents:write", "constraint": "feature_branches_only" },
   "issues": { "provider": "github", "scope": "issues:write", "constraint": "bug_issues_only" },
