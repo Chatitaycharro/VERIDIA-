@@ -1,0 +1,4 @@
+# Veridia agents configuration and enforcement artifacts
+/agents-runtime/ @Chatitaycharro
+/.github/workflows/validate-veridia-agents.yml @Chatitaycharro
+/.github/CODEOWNERS @Chatitaycharro
