@@ -1,0 +1,52 @@
+name: agente-ci
+purpose: "Orquestar workflows CI con GitHub Actions, ejecutar build, lint y test, y desplegar a staging"
+triggers:
+  - push_branch
+  - pr_ready_for_ci
+inputs:
+  - repo_url
+  - branch
+  - env
+  - deploy_policy
+outputs:
+  - workflow_status
+  - deployment_url
+  - deployment_report
+permissions:
+  read:
+    - repo:readonly
+  create:
+    - workflow_runs
+  write:
+    - deployment_records
+actions_allowed:
+  - run_workflow
+  - deploy_to_staging
+  - notify_on_failure
+human_approval_required:
+  - deploy_to_prod
+observability:
+  logs: true
+  workflow_metrics:
+    - build_time
+    - test_failures
+    - cache_hit_rate
+  log_retention_days: 90
+rate_limits:
+  deployments_per_day: 3
+ci_config:
+  node_version:
+    - 18
+  cache:
+    - npm
+  jobs:
+    - lint
+    - test
+    - build
+    - deploy-staging
+secrets:
+  source: hashicorp-vault
+  do_not_log_secrets: true
+retries:
+  job_retries: 2
+notes: "Deploy to staging automatizado; producción requiere una lista explícita de aprobadores."
