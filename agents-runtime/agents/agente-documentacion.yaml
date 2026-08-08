@@ -1,0 +1,31 @@
+name: agente-documentacion
+purpose: "Generar y mantener documentación técnica, changelogs y guías de uso"
+triggers:
+  - release_tagged
+  - pr_merged
+inputs:
+  - commits
+  - prs
+  - release_version
+outputs:
+  - changelog_md
+  - updated_readme
+  - faq_entries
+permissions:
+  read:
+    - repo:readonly
+    - prs:readonly
+    - commits:readonly
+  write:
+    - docs_repo:drafts
+actions_allowed:
+  - create_docs_pr
+  - update_changelog_draft
+human_approval_required:
+  - publish_docs
+observability:
+  logs: true
+  docs_coverage_metrics: true
+rate_limits:
+  docs_prs_per_day: 5
+notes: "Usar conventional commits; generar borradores y publicar únicamente tras revisión humana."

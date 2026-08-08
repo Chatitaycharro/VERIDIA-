@@ -1,0 +1,20 @@
+name: agente-invalido-permission
+purpose: "Fixture inválido con un permiso deliberadamente no mapeado"
+triggers:
+  - issue_created
+inputs:
+  - issue_id
+outputs:
+  - result
+permissions:
+  read:
+    - repo:readonly
+  write:
+    - repo:write:dangerous_scope
+actions_allowed:
+  - create_issue
+human_approval_required: []
+observability:
+  logs: true
+rate_limits:
+  tasks_per_minute: 1

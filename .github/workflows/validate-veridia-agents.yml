@@ -1,0 +1,37 @@
+name: Validate Veridia agents
+
+on:
+  pull_request:
+    paths:
+      - 'agents-runtime/**'
+      - '.github/workflows/validate-veridia-agents.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'agents-runtime/**'
+      - '.github/workflows/validate-veridia-agents.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: agents-runtime
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate YAML agents
+        run: npm run validate

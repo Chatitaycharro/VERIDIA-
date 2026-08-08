@@ -1,0 +1,44 @@
+name: agente-orquestador
+purpose: "Orquestar eventos, enrutar tareas a agentes especializados y mantener estado de workflows"
+triggers:
+  - github_issue_created
+  - github_pr_opened
+  - webhook:event
+inputs:
+  - event_type
+  - payload
+outputs:
+  - task_id
+  - routed_to
+  - workflow_status
+permissions:
+  read:
+    - repo:readonly
+    - issues:readonly
+    - pull_requests:readonly
+  write:
+    - agent_tasks
+actions_allowed:
+  - route_task
+  - aggregate_responses
+  - persist_workflow_state
+human_approval_required: []
+observability:
+  logs: true
+  traces: true
+  metrics:
+    - tasks_routed
+    - avg_latency_ms
+    - failed_routes
+  log_retention_days: 90
+rate_limits:
+  tasks_per_minute: 120
+retries:
+  max_attempts: 3
+  backoff_strategy: exponential
+provenance:
+  record_decisions: true
+  record_sources: true
+idempotency:
+  enforce_idempotent_handlers: true
+notes: "Validar schema de payload antes de enrutar; no ejecutar acciones mutativas sin token de orquestador."
