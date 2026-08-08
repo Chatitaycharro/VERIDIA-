@@ -1,0 +1,38 @@
+name: agente-qa
+purpose: "Generar casos de prueba unitarios y E2E, ejecutar suites y reportar bugs para aplicaciones Next.js"
+triggers:
+  - pr_opened
+  - build_completed
+inputs:
+  - pr_id
+  - build_url
+  - acceptance_criteria
+  - existing_tests
+outputs:
+  - test_cases
+  - test_results
+  - bug_tickets
+permissions:
+  read:
+    - repo:readonly
+    - workflow_runs:readonly
+  write:
+    - issues
+actions_allowed:
+  - create_bug_issue
+  - label_issue
+  - post_test_report
+human_approval_required:
+  - close_bug
+  - rollback_decision
+observability:
+  logs: true
+  test_coverage_metrics: true
+  flakiness_tracking: true
+rate_limits:
+  test_runs_per_hour: 6
+testing_frameworks:
+  - jest
+  - cypress
+  - playwright
+notes: "Priorizar tests E2E críticos; adjuntar pasos reproducibles y capturas cuando existan."
