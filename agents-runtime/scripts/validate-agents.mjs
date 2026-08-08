@@ -44,7 +44,7 @@ function collectPermissions(agent) {
   return Object.values(agent.permissions ?? {}).flatMap((value) => Array.isArray(value) ? value : []);
 }
 
-async function validateAgentFile(filePath, validateAgent, permissionsMap) {
+async function validateAgentFile(filePath, validateAgent, permissionsMap, allowedActions) {
   let data;
   try {
     data = await loadYaml(filePath);
@@ -60,6 +60,9 @@ async function validateAgentFile(filePath, validateAgent, permissionsMap) {
   const unmapped = collectPermissions(data).filter((permission) => !permissionsMap[permission]);
   if (unmapped.length) errors.push(`Permisos sin mapeo: ${[...new Set(unmapped)].join(', ')}`);
 
+  const unknownActions = (data.actions_allowed ?? []).filter((action) => !allowedActions[action]);
+  if (unknownActions.length) errors.push(`Acciones no permitidas: ${[...new Set(unknownActions)].join(', ')}`);
+
   const secretPaths = findPotentialSecrets(data);
   if (secretPaths.length) errors.push(`Posibles secretos en texto plano: ${secretPaths.join(', ')}`);
 
@@ -72,12 +75,13 @@ async function main() {
   const validateAgent = ajv.compile(await loadJson('schema/agent.schema.json'));
   const validateOrchestrator = ajv.compile(await loadJson('schema/orchestrator.schema.json'));
   const permissionsMap = await loadJson('schema/permissions-map.json');
+  const allowedActions = await loadJson('schema/allowed-actions.json');
   const agentFiles = (await fs.readdir(path.join(root, 'agents'))).filter((name) => name.endsWith('.yaml')).sort();
   const agentNames = new Set();
   let hasErrors = false;
 
   for (const file of agentFiles) {
-    const { data, errors } = await validateAgentFile(path.join(root, 'agents', file), validateAgent, permissionsMap);
+    const { data, errors } = await validateAgentFile(path.join(root, 'agents', file), validateAgent, permissionsMap, allowedActions);
     if (errors.length) {
       hasErrors = true;
       console.error(`✗ ${file}`);
@@ -114,7 +118,7 @@ async function main() {
   if (unregistered.length) { hasErrors = true; console.error(`✗ Agentes sin registrar: ${unregistered.join(', ')}`); }
 
   if (hasErrors) process.exit(2);
-  console.log(`\nValidación completada: ${agentNames.size} agentes consistentes, permisos mapeados y sin secretos detectados.`);
+  console.log(`\nValidación completada: ${agentNames.size} agentes consistentes, permisos y acciones mapeados, sin secretos detectados.`);
 }
 
 main().catch((error) => { console.error(error); process.exit(1); });
