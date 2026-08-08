@@ -1,0 +1,18 @@
+name: agente-desarrollo
+purpose: "Generar scaffold y PRs para features con Node 18, TypeScript y Next.js"
+triggers:
+  - ticket_assigned
+inputs:
+  - ticket_id
+outputs:
+  - branch_name
+permissions:
+  read:
+    - repo:readonly
+actions_allowed:
+  - create_branch
+human_approval_required: []
+observability:
+  logs: true
+rate_limits:
+  branches_per_hour: 1
