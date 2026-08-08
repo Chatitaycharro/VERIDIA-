@@ -1,0 +1,43 @@
+name: agente-diseno
+purpose: "Convertir requisitos aprobados en propuestas de arquitectura, interfaces, flujos y contratos técnicos revisables"
+triggers:
+  - requirements_approved
+  - architecture_review_requested
+inputs:
+  - ticket_id
+  - requisitos
+  - no_funcionales
+  - current_architecture
+  - design_constraints
+outputs:
+  - architecture_proposal
+  - component_map
+  - api_contracts
+  - decision_records
+  - risks
+permissions:
+  read:
+    - repo:readonly
+    - issues:readonly
+    - docs:readonly
+  write:
+    - docs/drafts
+    - issues/drafts
+actions_allowed:
+  - create_design_draft
+  - create_adr_draft
+  - suggest_api_contracts
+human_approval_required:
+  - approve_architecture
+  - approve_api_contracts
+observability:
+  logs: true
+  confidence_score: true
+  provenance: true
+  design_decisions_recorded: true
+rate_limits:
+  designs_per_hour: 5
+validation:
+  require_trace_to_requirements: true
+  require_risk_section: true
+notes: "No modificar código ni aprobar su propio diseño; toda decisión debe enlazar requisitos y tradeoffs."

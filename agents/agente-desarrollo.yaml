@@ -1,0 +1,50 @@
+name: agente-desarrollo
+purpose: "Generar scaffold, componentes, API routes y tests para Node 18 TypeScript Next.js; abrir PRs en draft"
+triggers:
+  - ticket_assigned
+  - design_approved
+inputs:
+  - ticket_id
+  - description
+  - pages_affected
+  - api_endpoints
+  - repo_url
+  - code_context_snippets
+outputs:
+  - branch_name
+  - files_changed
+  - tests_added
+  - pr_description
+permissions:
+  read:
+    - repo:readonly
+  write:
+    - branches/feature/*
+  create:
+    - pull_requests:draft
+actions_allowed:
+  - create_branch
+  - push_files_to_branch
+  - open_pr_draft
+human_approval_required:
+  - merge_to_main
+  - production_deploy
+observability:
+  logs: true
+  confidence_score: true
+  provenance: true
+  artifact_hashing: true
+rate_limits:
+  branches_per_hour: 3
+  files_generated_per_action: 30
+code_style:
+  eslint: true
+  prettier: true
+  typescript: true
+testing:
+  jest: true
+  testing_library: true
+security:
+  secrets_handling: use_vault_references_only
+  disallow_secrets_in_output: true
+notes: "No merge automático; PRs deben incluir checklist y evidencia de tests. Temperature baja para generación de código."
