@@ -1,0 +1,15 @@
+name: agente-invalido-missing
+purpose: "Fixture inválido sin permisos declarados"
+triggers:
+  - issue_created
+inputs:
+  - issue_id
+outputs:
+  - validation_report
+actions_allowed:
+  - validate_schema
+human_approval_required: []
+observability:
+  logs: true
+rate_limits:
+  tasks_per_minute: 5
