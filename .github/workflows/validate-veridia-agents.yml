@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - 'agents-runtime/**'
+      - 'scripts/verify-and-collect.sh'
       - '.github/CODEOWNERS'
       - '.github/workflows/validate-veridia-agents.yml'
   push:
@@ -13,6 +14,7 @@ on:
       - agent/veridia-agents-node18-updates
     paths:
       - 'agents-runtime/**'
+      - 'scripts/verify-and-collect.sh'
       - '.github/CODEOWNERS'
       - '.github/workflows/validate-veridia-agents.yml'
 
@@ -23,10 +25,8 @@ jobs:
   validate:
     name: Validate Veridia Agents
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    defaults:
-      run:
-        working-directory: agents-runtime
+    timeout-minutes: 10
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,13 +36,17 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+      - name: Validate and collect evidence
+        run: bash scripts/verify-and-collect.sh
 
-      - name: Validate agents and fixtures
-        run: npm test
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: veridia-agents-evidence-${{ github.sha }}
+          path: |
+            artifacts/veridia-agents/
+            artifacts/veridia-agents-evidence.tar.gz
+            artifacts/veridia-agents-evidence.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 30
