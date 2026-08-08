@@ -1,14 +1,16 @@
-name: Validate Veridia agents
+name: Validate Veridia Agents
 
 on:
   pull_request:
     paths:
       - 'agents-runtime/**'
+      - '.github/CODEOWNERS'
       - '.github/workflows/validate-veridia-agents.yml'
   push:
     branches: [main]
     paths:
       - 'agents-runtime/**'
+      - '.github/CODEOWNERS'
       - '.github/workflows/validate-veridia-agents.yml'
 
 permissions:
@@ -16,6 +18,7 @@ permissions:
 
 jobs:
   validate:
+    name: Validate Veridia Agents
     runs-on: ubuntu-latest
     timeout-minutes: 5
     defaults:
@@ -29,9 +32,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: npm
+          cache-dependency-path: agents-runtime/package-lock.json
 
       - name: Install dependencies
         run: npm install
 
-      - name: Validate YAML agents
-        run: npm run validate
+      - name: Validate agents
+        run: npm test
