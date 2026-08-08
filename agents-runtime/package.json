@@ -6,7 +6,8 @@
   "engines": { "node": ">=18 <19" },
   "scripts": {
     "validate": "node scripts/validate-agents.mjs",
-    "test": "npm run validate"
+    "test:fixtures": "node scripts/test-fixtures.mjs",
+    "test": "npm run validate && npm run test:fixtures"
   },
   "dependencies": {
     "ajv": "^8.17.1",
