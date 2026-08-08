@@ -1,0 +1,20 @@
+name: agente-fixture-action
+purpose: "Fixture negativo para comprobar rechazo de acciones no registradas"
+triggers:
+  - fixture_event
+inputs:
+  - payload
+outputs:
+  - result
+permissions:
+  read:
+    - repo:readonly
+actions_allowed:
+  - execute_unregistered_production_action
+human_approval_required:
+  - deploy_to_prod
+observability:
+  logs: true
+rate_limits:
+  tasks_per_hour: 1
+notes: "Este fixture debe ser rechazado por la allowlist."
