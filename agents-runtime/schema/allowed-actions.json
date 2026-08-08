@@ -6,6 +6,8 @@
   "add_labels_suggestion": { "risk": "low", "mutating": false },
   "add_estimation_suggestion": { "risk": "low", "mutating": false },
   "create_design_draft": { "risk": "low", "mutating": true, "constraint": "draft_only" },
+  "create_adr_draft": { "risk": "low", "mutating": true, "constraint": "draft_only" },
+  "suggest_api_contracts": { "risk": "low", "mutating": false },
   "create_branch": { "risk": "medium", "mutating": true, "constraint": "feature_branches_only" },
   "push_files_to_branch": { "risk": "medium", "mutating": true, "constraint": "feature_branches_only" },
   "open_pr_draft": { "risk": "medium", "mutating": true, "constraint": "draft_only" },
