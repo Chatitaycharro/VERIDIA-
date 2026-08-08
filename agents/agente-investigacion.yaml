@@ -1,0 +1,45 @@
+name: agente-investigacion
+purpose: "Extraer requisitos, analizar contexto y proponer alternativas técnicas y criterios de aceptación"
+triggers:
+  - issue_created
+  - epic_created
+inputs:
+  - issue_id
+  - title
+  - description
+  - product_context
+  - user_profiles
+outputs:
+  - requisitos
+  - no_funcionales
+  - alternativas
+  - criterios_aceptacion
+  - confianza
+  - fuentes
+permissions:
+  read:
+    - repo:readonly
+    - issues:readonly
+    - docs:readonly
+  write:
+    - issues/drafts
+actions_allowed:
+  - create_issue_draft
+  - add_labels_suggestion
+  - add_estimation_suggestion
+human_approval_required:
+  - final_priority
+  - final_estimation
+observability:
+  logs: true
+  confidence_score: true
+  provenance: true
+  sample_outputs_retention_days: 30
+rate_limits:
+  analyses_per_hour: 10
+validation:
+  output_schema: "requisitos[],no_funcionales[],alternativas[],criterios_aceptacion[],confianza:number"
+examples:
+  - input_sample: "Issue: Implementar checkout; Contexto: Next.js, Node 18"
+    output_sample: "{requisitos: [...], alternativas: [...], confianza: 0.82}"
+notes: "Incluir tradeoffs SSR/SSG/ISR; adjuntar fuentes externas solo si se registran en provenance."
