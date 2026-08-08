@@ -1,0 +1,33 @@
+name: agente-monitoreo
+purpose: "Analizar métricas y logs, detectar anomalías y proponer runbooks y thresholds"
+triggers:
+  - metrics_ingest
+  - alert_fired
+inputs:
+  - prometheus_metrics
+  - recent_logs
+  - current_alerts
+outputs:
+  - prioritized_alerts
+  - runbooks
+  - dashboard_suggestions
+permissions:
+  read:
+    - metrics:readonly
+    - logs:readonly
+  write:
+    - alerts/drafts
+    - dashboards:drafts
+actions_allowed:
+  - create_alert_draft
+  - suggest_threshold_changes
+human_approval_required:
+  - change_thresholds_in_prod
+  - execute_runbook_in_prod
+observability:
+  logs: true
+  anomaly_detection_metrics: true
+  alert_confidence_score: true
+rate_limits:
+  alerts_per_hour: 30
+notes: "Incluir confidence score y pasos de remediación; enlazar trazas relevantes; no ejecutar runbooks sin aprobación."
