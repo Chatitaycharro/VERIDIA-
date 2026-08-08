@@ -6,6 +6,7 @@ RUNTIME_DIR="$ROOT_DIR/agents-runtime"
 ARTIFACT_DIR="$ROOT_DIR/artifacts"
 
 mkdir -p "$ARTIFACT_DIR"
+rm -f "$ARTIFACT_DIR"/*.txt "$ARTIFACT_DIR"/*.status "$ARTIFACT_DIR/evidence_bundle.tar.gz"
 
 run_and_capture() {
   local name="$1"
@@ -18,17 +19,18 @@ run_and_capture() {
     local rc=$?
     echo "FAIL exit=$rc" > "$ARTIFACT_DIR/${name}.status"
     echo "✗ $name (exit=$rc)"
-    return "$rc"
+    tail -n 80 "$ARTIFACT_DIR/${name}.txt" || true
+    exit "$rc"
   fi
 }
 
-echo "1) Instalar dependencias reproducibles"
+echo "1) Instalar dependencias de agents-runtime"
 cd "$RUNTIME_DIR"
 if [[ -f package-lock.json ]]; then
   npm ci
 else
-  echo "ERROR: falta agents-runtime/package-lock.json; npm ci no puede garantizar instalación reproducible." >&2
-  exit 2
+  echo "AVISO: falta agents-runtime/package-lock.json; usando npm install para coincidir con el workflow actual."
+  npm install
 fi
 
 echo "2) Ejecutar validador canónico"
@@ -37,13 +39,14 @@ run_and_capture validator_output npm run validate
 echo "3) Ejecutar suite completa (validate + fixtures)"
 run_and_capture npm_test_output npm test
 
-echo "4) Ejecutar suite explícita de fixtures"
+echo "4) Ejecutar suite explícita de fixtures positivos y negativos"
 run_and_capture fixtures_output npm run test:fixtures
 
 echo "5) Registrar metadatos de evidencia"
 {
   echo "timestamp_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   echo "git_sha=$(git -C "$ROOT_DIR" rev-parse HEAD)"
+  echo "git_branch=$(git -C "$ROOT_DIR" rev-parse --abbrev-ref HEAD)"
   echo "node=$(node --version)"
   echo "npm=$(npm --version)"
 } > "$ARTIFACT_DIR/metadata.txt"
@@ -55,7 +58,6 @@ for file in validator_output npm_test_output fixtures_output; do
 done
 
 echo "7) Preparar paquete de evidencia"
-rm -f "$ARTIFACT_DIR/evidence_bundle.tar.gz"
 tar -czf "$ARTIFACT_DIR/evidence_bundle.tar.gz" \
   -C "$ARTIFACT_DIR" \
   validator_output.txt validator_output.status \
