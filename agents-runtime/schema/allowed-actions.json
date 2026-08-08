@@ -1,0 +1,22 @@
+{
+  "route_task": { "risk": "low", "mutating": false },
+  "aggregate_responses": { "risk": "low", "mutating": false },
+  "persist_workflow_state": { "risk": "medium", "mutating": true },
+  "create_issue_draft": { "risk": "low", "mutating": true, "constraint": "draft_only" },
+  "add_labels_suggestion": { "risk": "low", "mutating": false },
+  "add_estimation_suggestion": { "risk": "low", "mutating": false },
+  "create_design_draft": { "risk": "low", "mutating": true, "constraint": "draft_only" },
+  "create_branch": { "risk": "medium", "mutating": true, "constraint": "feature_branches_only" },
+  "push_files_to_branch": { "risk": "medium", "mutating": true, "constraint": "feature_branches_only" },
+  "open_pr_draft": { "risk": "medium", "mutating": true, "constraint": "draft_only" },
+  "run_workflow": { "risk": "medium", "mutating": true },
+  "deploy_to_staging": { "risk": "high", "mutating": true, "approval": "policy_defined" },
+  "notify_on_failure": { "risk": "low", "mutating": true },
+  "create_bug_issue": { "risk": "low", "mutating": true, "constraint": "bug_issues_only" },
+  "label_issue": { "risk": "low", "mutating": true },
+  "post_test_report": { "risk": "low", "mutating": true },
+  "create_docs_pr": { "risk": "medium", "mutating": true, "constraint": "draft_only" },
+  "update_changelog_draft": { "risk": "low", "mutating": true, "constraint": "draft_only" },
+  "create_alert_draft": { "risk": "low", "mutating": true, "constraint": "draft_only" },
+  "suggest_threshold_changes": { "risk": "low", "mutating": false }
+}
