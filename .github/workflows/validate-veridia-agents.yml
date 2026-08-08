@@ -1,13 +1,16 @@
 name: Validate Veridia Agents
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - 'agents-runtime/**'
       - '.github/CODEOWNERS'
       - '.github/workflows/validate-veridia-agents.yml'
   push:
-    branches: [main]
+    branches:
+      - main
+      - agent/veridia-agents-node18-updates
     paths:
       - 'agents-runtime/**'
       - '.github/CODEOWNERS'
@@ -32,9 +35,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: npm
+          cache-dependency-path: agents-runtime/package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
-      - name: Validate agents
+      - name: Validate agents and fixtures
         run: npm test
