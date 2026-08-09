@@ -1,0 +1,5 @@
+# Glosario sintético mínimo para Veridia Start v1.0 estricto
+trazabilidad
+evidencia
+permiso no autorizado
+secreto
