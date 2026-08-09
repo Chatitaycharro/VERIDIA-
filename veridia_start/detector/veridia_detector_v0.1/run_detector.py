@@ -52,10 +52,17 @@ def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
+def relative_text_ref(document: Path, corpus_dir: Path) -> str:
+    """Return a portable document reference relative to the corpus root."""
+    return document.relative_to(corpus_dir).as_posix()
+
+
 def main() -> int:
     args = parse_args()
-    terms = load_terms(args.glossary)
-    corpus_files = text_files(args.corpus)
+    corpus_dir = args.corpus.resolve()
+    glossary_dir = args.glossary.resolve()
+    terms = load_terms(glossary_dir)
+    corpus_files = text_files(corpus_dir)
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
     items: list[dict[str, object]] = []
@@ -72,7 +79,7 @@ def main() -> int:
         items.append(
             {
                 "item_id": f"item-{item_counter:04d}",
-                "text_ref": document.as_posix(),
+                "text_ref": relative_text_ref(document, corpus_dir),
                 "document_sha256": sha256_text(text),
                 "score": score,
                 "label": "Alerta",
