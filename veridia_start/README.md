@@ -33,6 +33,18 @@ Windows PowerShell:
 powershell -ExecutionPolicy Bypass -File .\veridia_start\start_strict.ps1
 ```
 
+## Heurística de `score`
+
+El campo `score` del detector mínimo es una heurística de ordenamiento usada únicamente por este prototipo.
+
+- Rango: `0.0` a `1.0`.
+- Cálculo actual: `0.5 + 0.1 × número de términos distintos coincidentes`, limitado a `1.0`.
+- Significado: indicador relativo de coincidencia literal con el glosario controlado.
+- No representa una probabilidad calibrada, nivel estadístico de confianza ni evaluación semántica.
+- No debe usarse por sí solo para aprobar, rechazar o priorizar decisiones sustantivas.
+
+Versiones posteriores deberán conservar esta definición o sustituirla mediante una función documentada y validada con un corpus representativo.
+
 ## Reglas de seguridad
 
 - El arranque falla si faltan el glosario, el detector, el corpus o `run_detector.py`.
