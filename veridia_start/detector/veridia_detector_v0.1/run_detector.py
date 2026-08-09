@@ -25,15 +25,18 @@ def load_terms(glossary_dir: Path) -> list[str]:
     if not terms_path.is_file():
         raise FileNotFoundError(f"No existe el glosario: {terms_path}")
 
-    terms = []
+    # Preserve the first canonical spelling while treating case variants as
+    # the same controlled term. This keeps matching deterministic and avoids
+    # duplicate alerts for entries such as "Evidencia" and "evidencia".
+    terms_by_key: dict[str, str] = {}
     for raw_line in terms_path.read_text(encoding="utf-8").splitlines():
         term = raw_line.strip()
         if term and not term.startswith("#"):
-            terms.append(term)
+            terms_by_key.setdefault(term.casefold(), term)
 
-    if not terms:
+    if not terms_by_key:
         raise ValueError("El glosario no contiene términos activos")
-    return sorted(set(terms), key=str.casefold)
+    return sorted(terms_by_key.values(), key=str.casefold)
 
 
 def text_files(corpus_dir: Path) -> list[Path]:
