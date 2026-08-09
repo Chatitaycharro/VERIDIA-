@@ -1,0 +1,5 @@
+logs/session_*.json
+logs/detector_output_*.json
+auditoria/audit_*.md
+!logs/session_template.json
+!auditoria/audit_entry_template.md
