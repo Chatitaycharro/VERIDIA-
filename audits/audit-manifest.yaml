@@ -1,0 +1,32 @@
+audit_id: DICTAMEN-VERIDIA-AGENTS-001
+status: candidate_for_freeze
+repository: Chatitaycharro/VERIDIA-
+commit_evaluado: "0de6d9613688c7741b9374cb06fa0bac576b4809"
+commit_evaluado_date_utc: "2026-08-09T01:29:01Z"
+evaluation_date: "2026-08-08T21:24:00-06:00"
+artifact_path: "docs/audits/dictamen-veridia-agents-0de6d9613688.md"
+artifact_hash:
+  algorithm: sha256
+  value: "304b92da63102d9665607c090ebb36fd92e6f1b2c40e6813088c65c7f4da892a"
+evaluators:
+  - name: pending
+    role: auditor_principal
+  - name: pending
+    role: independent_reviewer_1
+  - name: pending
+    role: independent_reviewer_2
+evidence:
+  structural_ci:
+    commit: "efddef759f1f4df157b56f58be58d1cce596ae9b"
+    run_id: "31244707405"
+    workflow: "Validate Veridia Agents"
+    result: success
+    scope_note: "El run valida el ancestro estructural. La comparación hasta el commit evaluado no muestra cambios en los ocho YAML, schemas, mapas, allowlist o validador."
+  runtime:
+    status: not_demonstrated
+  production_authorization:
+    status: not_granted
+signatures:
+  dco: absent
+  cryptographic: absent
+notes: "Validación estructural favorable con observaciones; runtime enforcement no demostrado; producción no autorizada. El dictamen no debe reescribirse ante cambios del objeto auditado."
