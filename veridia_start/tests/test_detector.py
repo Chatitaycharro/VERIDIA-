@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import importlib.util
-import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -29,6 +28,14 @@ class DetectorTests(unittest.TestCase):
             (corpus / "sub" / "a.txt").write_text("a", encoding="utf-8")
             names = [path.relative_to(corpus).as_posix() for path in DETECTOR.text_files(corpus)]
             self.assertEqual(names, ["b.txt", "sub/a.txt"])
+
+    def test_relative_text_ref_uses_corpus_root(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            corpus = Path(tmp).resolve()
+            nested = corpus / "sub" / "doc_001.txt"
+            nested.parent.mkdir()
+            nested.write_text("evidencia", encoding="utf-8")
+            self.assertEqual(DETECTOR.relative_text_ref(nested, corpus), "sub/doc_001.txt")
 
     def test_sha256_text_is_deterministic(self) -> None:
         self.assertEqual(DETECTOR.sha256_text("Veridia"), DETECTOR.sha256_text("Veridia"))
