@@ -1,0 +1,91 @@
+name: Validate Veridia Agents + evidence-pack
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - evidence/harness-efddef7
+    paths:
+      - 'scripts/package-evidence.sh'
+      - '.github/workflows/veridia-evidence-pack.yml'
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_COMMIT: efddef759f1f4df157b56f58be58d1cce596ae9b
+
+jobs:
+  validate:
+    name: Validate Veridia Agents
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: agents-runtime
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Verify protected paths match source commit
+        working-directory: .
+        run: |
+          git diff --exit-code "$SOURCE_COMMIT" -- agents-runtime .github/CODEOWNERS
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Validate agents and fixtures
+        run: npm test
+
+  package-evidence:
+    name: Package Veridia evidence
+    needs: validate
+    if: success()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout harness branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        working-directory: agents-runtime
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Build evidence package
+        run: |
+          chmod +x scripts/package-evidence.sh
+          ./scripts/package-evidence.sh
+
+      - name: Upload Veridia evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: veridia-evidence-${{ github.sha }}-from-efddef7
+          path: evidence/
+          retention-days: 90
+          if-no-files-found: error
