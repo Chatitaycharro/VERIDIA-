@@ -1,0 +1,19 @@
+name: agente-invalido-2
+purpose: "Contiene un campo desconocido que debe rechazarse"
+triggers:
+  - webhook:event
+inputs:
+  - payload
+outputs:
+  - result
+permissions:
+  read:
+    - repo:readonly
+actions_allowed:
+  - do_something
+human_approval_required: []
+observability:
+  logs: true
+rate_limits:
+  tasks_per_minute: 1
+dangerous_action: true

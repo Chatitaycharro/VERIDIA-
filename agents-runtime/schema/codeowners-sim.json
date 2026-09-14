@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "pattern": "agents-runtime/agents/**",
+      "owners": ["@Chatitaycharro"],
+      "required_approvals": 1
+    },
+    {
+      "pattern": "agents-runtime/schema/**",
+      "owners": ["@Chatitaycharro"],
+      "required_approvals": 1
+    },
+    {
+      "pattern": "agents-runtime/scripts/**",
+      "owners": ["@Chatitaycharro"],
+      "required_approvals": 1
+    },
+    {
+      "pattern": ".github/workflows/validate-veridia-agents.yml",
+      "owners": ["@Chatitaycharro"],
+      "required_approvals": 1
+    }
+  ]
+}

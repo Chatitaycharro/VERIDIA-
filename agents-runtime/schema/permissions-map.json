@@ -1,0 +1,22 @@
+{
+  "repo:readonly": { "provider": "github", "scope": "contents:read" },
+  "issues:readonly": { "provider": "github", "scope": "issues:read" },
+  "pull_requests:readonly": { "provider": "github", "scope": "pull_requests:read" },
+  "prs:readonly": { "provider": "github", "scope": "pull_requests:read" },
+  "commits:readonly": { "provider": "github", "scope": "contents:read" },
+  "workflow_runs:readonly": { "provider": "github", "scope": "actions:read" },
+  "docs:readonly": { "provider": "repository", "scope": "contents:read" },
+  "metrics:readonly": { "provider": "observability", "scope": "metrics:read" },
+  "logs:readonly": { "provider": "observability", "scope": "logs:read" },
+  "agent_tasks": { "provider": "veridia", "scope": "agent_tasks:write" },
+  "issues/drafts": { "provider": "github", "scope": "issues:write", "constraint": "draft_only" },
+  "designs/drafts": { "provider": "veridia", "scope": "designs:write", "constraint": "draft_only" },
+  "branches/feature/*": { "provider": "github", "scope": "contents:write", "constraint": "feature_branches_only" },
+  "issues": { "provider": "github", "scope": "issues:write", "constraint": "bug_issues_only" },
+  "workflow_runs": { "provider": "github", "scope": "actions:write" },
+  "deployment_records": { "provider": "github", "scope": "deployments:write" },
+  "docs_repo:drafts": { "provider": "github", "scope": "contents:write", "constraint": "docs_drafts_only" },
+  "alerts/drafts": { "provider": "observability", "scope": "alerts:write", "constraint": "draft_only" },
+  "dashboards:drafts": { "provider": "observability", "scope": "dashboards:write", "constraint": "draft_only" },
+  "pull_requests:draft": { "provider": "github", "scope": "pull_requests:write", "constraint": "draft_only" }
+}

@@ -1,0 +1,23 @@
+name: agente-qa
+purpose: "Generar casos de prueba y reportar bugs"
+triggers:
+  - pr_opened
+inputs:
+  - pr_id
+outputs:
+  - test_results
+permissions:
+  read:
+    - repo:readonly
+  write:
+    - issues
+actions_allowed:
+  - create_bug_issue
+human_approval_required:
+  - rollback_decision
+observability:
+  logs: true
+  metrics:
+    - test_coverage
+rate_limits:
+  test_runs_per_hour: 2

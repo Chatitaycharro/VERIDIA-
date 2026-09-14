@@ -1,0 +1,4 @@
+# Propietario inicial de la configuración de agentes Veridia
+/agents-runtime/ @Chatitaycharro
+/.github/workflows/validate-veridia-agents.yml @Chatitaycharro
+/.github/CODEOWNERS @Chatitaycharro

@@ -1,0 +1,22 @@
+orchestrator_config:
+  agents:
+    - agente-orquestador
+    - agente-investigacion
+    - agente-diseno
+    - agente-desarrollo
+    - agente-qa
+    - agente-ci
+    - agente-documentacion
+    - agente-monitoreo
+  event_bus: redis-streams
+  vector_db: weaviate
+  secrets_store: hashicorp-vault
+  audit_log: centralized
+  default_human_approval_flow:
+    - step: merge_to_main
+      approvers:
+        - tech_lead
+        - product_manager
+    - step: deploy_to_prod
+      approvers:
+        - release_manager
