@@ -1,0 +1,12 @@
+{
+  "session_id": "VERIDIA-SESSION-{{YYYYMMDD}}-{{HHMMSS}}",
+  "start_time": "{{ISO8601_UTC}}",
+  "glossary_version": "v1.1.0",
+  "detector_version": "veridia_detector_v0.1",
+  "corpus_id": "caso01",
+  "agents_active": ["detector", "registrador", "auditor"],
+  "mode": "strict",
+  "hash_glossary": "sha256:{{GLOSSARY_HASH}}",
+  "hash_detector": "sha256:{{DETECTOR_HASH}}",
+  "notes": ""
+}

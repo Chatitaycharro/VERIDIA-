@@ -1,0 +1,16 @@
+{
+  "session_id": "VERIDIA-SESSION-{{YYYYMMDD}}-{{HHMMSS}}",
+  "detector_version": "veridia_detector_v0.1",
+  "generated_at": "{{ISO8601_UTC}}",
+  "items": [
+    {
+      "item_id": "item-0001",
+      "text_ref": "corpus/caso01/doc_001.txt",
+      "score": 0.92,
+      "label": "Alerta",
+      "classification_type": "Evidencia",
+      "explanation": "Coincidencia con término controlado del glosario v1.1.0",
+      "timestamp": "{{ISO8601_UTC}}"
+    }
+  ]
+}
