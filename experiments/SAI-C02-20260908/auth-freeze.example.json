@@ -1,0 +1,11 @@
+{
+  "run_id": "SAI-C02-20260908",
+  "preregistration_sha256": "<64 hex>",
+  "executor_package_sha256": "<64 hex>",
+  "oracle_package_sha256": "<64 hex>",
+  "executor": "<identidad/rol>",
+  "evaluator": "<identidad humana/rol>",
+  "authorized_at": "<ISO-8601 con zona>",
+  "authorization": "AUTHORIZED_TO_RUN",
+  "human_signature": "<mecanismo verificable>"
+}
