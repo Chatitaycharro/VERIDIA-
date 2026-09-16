@@ -238,4 +238,22 @@ GATE 1 = NO CERRADO se mantiene por fundamento independiente ya fijado (estados 
 
 #### Correcciones
 
-Ninguna.
+Corrección 2026-09-16 (posterior al commit): esta entrada fue incorporada
+mediante el commit 519c5c6f82adb10758db67ec47449d5b35008a00 (autor
+Chatitaycharro <jmdiazgerard@gmail.com>, 2026-09-16T10:48:34-06:00),
+verificado independientemente por Claude contra el repositorio clonado: el
+commit existe en origin/agent/sai-c02-executable-v0.3 y el blob
+069b7d65bb0e3183fc70ee57dd6b659e0ab06fa5 coincide exactamente con el texto
+autorizado. Esta verificación cubre solo la existencia y fidelidad del
+commit, no los puntos (a)-(d) de E-02; E-P01 permanece pendiente de
+contraste material independiente del operador sobre esos puntos.
+
+Ese commit deja desactualizada, sin alterarla, la línea "Commit de esta
+entrada al repositorio" en acciones no ejecutadas. "Integración técnica"
+no cambia: se refiere a la integración del episodio investigado —origen de
+C03/C04/PUERTO-CERTERO-001—, no a la incorporación registral de esta
+entrada a Git.
+
+Desde esta corrección: Estado del registro = REGISTRADO — EN REVISIÓN;
+Estado de la acción = EJECUTADA; Integración técnica = NO EJECUTADA (sin
+cambio).
