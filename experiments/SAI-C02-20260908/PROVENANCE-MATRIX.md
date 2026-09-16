@@ -1,7 +1,7 @@
 # Matriz de procedencia y disposición — SAI-C02 / PR #6
 
 Estado: **CUARENTENA METODOLÓGICA**  
-Alcance: los 14 archivos del PR #6 en la rama `agent/sai-c02-executable-v0.3`.
+Alcance: los 14 archivos del paquete técnico original del PR #6. Los documentos posteriores de cuarentena, revisión y reanudación son controles derivados y no se contabilizan como parte del paquete evaluado.
 
 ## Regla de lectura
 
@@ -12,7 +12,7 @@ Esta matriz separa cuatro preguntas que no deben colapsarse:
 3. **Origen del canal:** ¿puede identificarse el mecanismo que incorporó el archivo?
 4. **Admisión canónica:** ¿una autoridad humana autorizó su contenido como norma de Veridia?
 
-La existencia del archivo y un CI correcto **no** acreditan su admisión canónica. El canal de incorporación de este PR es verificable como `chatgpt-codex-connector` (OpenAI). La admisión semántica de sus reglas permanece pendiente.
+La existencia del archivo y un CI correcto **no** acreditan su admisión canónica. El canal de incorporación de este PR es verificable como `chatgpt-codex-connector` (OpenAI). La admisión semántica de sus reglas permanece pendiente. La candidata consolidada está en `preregister/preregister-v0.4-candidate.md` y su revisión en `ADMISSION-REVIEW.md`.
 
 ## Estados de disposición
 
@@ -40,7 +40,7 @@ En esta revisión **ningún archivo se clasifica como CANÓNICO ni CONTAMINADO**
 | 13 | `scripts/c02.py` | Verificada | Verificado | Implementación técnica | RESCATABLE | Auditar que implemente únicamente reglas admitidas |
 | 14 | `tests/test_c02.py` | Verificada | Verificado | Pruebas técnicas | RESCATABLE | Rebasar tests sobre especificación admitida, no convertir tests en canon |
 
-## Resultado
+## Resultado del paquete original
 
 - CANÓNICO: **0**
 - RESCATABLE: **9**
@@ -57,3 +57,12 @@ Este PR no puede fusionarse, congelarse ni presentarse como C02 ejecutable canó
 4. los componentes RESCATABLES se vuelvan a validar contra la versión admitida.
 
 La clasificación puede cambiar solo mediante evidencia nueva registrada; no por inferencia retrospectiva.
+
+## Controles agregados después de la cuarentena
+
+| Control | Función | Estado |
+|---|---|---|
+| `PROVENANCE-MATRIX.md` | Separar existencia, canal y admisión | Control operativo |
+| `CLEAN-RESTART.md` | Definir puertas G0–G5 | Control operativo |
+| `ADMISSION-REVIEW.md` | Registrar revisión de cinco pendientes | Pendiente de decisión humana única |
+| `preregister/preregister-v0.4-candidate.md` | Referente normativo consolidado | Candidata, no admitida |
