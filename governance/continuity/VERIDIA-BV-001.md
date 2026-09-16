@@ -85,6 +85,7 @@ Los campos opcionales pueden omitirse cuando no sean aplicables. La captura ordi
 ## 6. Índice
 
 - [BV-2026-09-13-001](#bv-2026-09-13-001--integración-móvil-preliminar-s25-ultramini-pchermes) — Integración móvil preliminar S25 Ultra–mini PC–Hermes — Registro: `REGISTRADO — EN REVISIÓN`; acción: `DETENIDA`; integración: `NO EJECUTADA`.
+- [BV-2026-09-16-001](#bv-2026-09-16-001--verificación-material-del-repositorio-y-origen-de-c03c04puerto-certero-001) — Verificación material del repositorio y origen de C03/C04/PUERTO-CERTERO-001 — Registro: `BORRADOR APROBADO — INCORPORACIÓN PENDIENTE`; acción: `PROPUESTA`; integración: `NO EJECUTADA`.
 
 ## 7. Entradas
 
@@ -164,6 +165,75 @@ Detener la exploración técnica y someter la propuesta a revisión previa. Dise
 **Estado del registro:** `REGISTRADO — EN REVISIÓN`  
 **Estado de la acción:** `DETENIDA`  
 **Integración técnica:** `NO EJECUTADA`  
+**Autorización de reanudación:** — (ninguna)
+
+#### Correcciones
+
+Ninguna.
+
+### BV-2026-09-16-001 — Verificación material del repositorio y origen de C03/C04/PUERTO-CERTERO-001
+
+**Fecha:** 2026-09-16
+**Hora:** no asentada en la fuente disponible.
+
+#### Evidencia disponible
+
+- **E-01 — Primaria.** Existencia, reglas y estructura de este mismo archivo VERIDIA-BV-001.md; su única entrada previa (BV-2026-09-13-001) ya aplica la separación evidencia primaria/secundaria y mantiene provisionales las inferencias dependientes de una conversación externa no recuperada.
+- **E-02 — Secundaria, reportada por sesión de Claude, pendiente de contraste material directo por el operador.** Resultado de clonar y revisar el repositorio público github.com/Chatitaycharro/VERIDIA- (siete ramas): (a) commit 07be5f1 en agent/sai-c02-executable-v0.3, fechado 2026-09-16T01:13:19-06:00, archivo experiments/SAI-C02-20260908/CLEAN-RESTART.md, que define G1 para SAI-C02 y excluye explícitamente a "C03" y "AUTH_GATE" de presunción canónica sin texto/acto humano verificable; (b) ausencia de todo commit fechado 2026-09-15 en cualquier rama; (c) ausencia de toda mención a "C04" o "PUERTO-CERTERO" en mensajes de commit y contenido de archivos de la historia completa; (d) canal de incorporación del PR #6 (paquete técnico de C02) identificado en PROVENANCE-MATRIX.md como chatgpt-codex-connector (OpenAI).
+
+#### Evidencia pendiente
+
+- **E-P01.** Contraste material independiente del operador sobre cada punto de E-02.
+- **E-P02.** Sesión, prompt e insumos de ChatGPT que originaron PUERTO-CERTERO-001.
+- **E-P03.** Sesión, prompt e insumos —si existen— que originaron la declaración "C03=CERRADO" y la apertura de C04 el 15/09.
+
+#### Inferencias
+
+- **I-01 — PROVISIONAL.** Existe al menos un patrón que amerita investigar contaminación/procedencia entre sesiones y agentes: el canal chatgpt-codex-connector del PR #6 real coincide en tipo de origen con el reportado para PUERTO-CERTERO-001.
+- **I-02 — PROVISIONAL.** De lo anterior no se infiere que C03, C04 o AUTH_GATE sean fabricados — solo que su promoción a estado canónico carece, hasta ahora, de sustento verificable en la fuente que se declara única.
+
+Las inferencias I-01 e I-02 permanecen provisionales hasta el contraste material del operador sobre E-02 y hasta localizar E-P02 y E-P03.
+
+#### Decisión
+
+GATE 1 = NO CERRADO se mantiene por fundamento independiente ya fijado (estados de C03 y C04 en episodios previos). Esta entrada documenta el episodio investigativo; no reabre, cierra ni canoniza C03, C04 ni AUTH_GATE.
+
+#### Acciones ejecutadas
+
+- Clonación y revisión del repositorio por sesión de Claude (ver E-02), sujeta a contraste.
+- Redacción de esta entrada como borrador.
+- Autorización expresa de incorporación por Juan Manuel Díaz Gerard, en conversación de voz, 2026-09-16.
+
+#### Acciones no ejecutadas
+
+- Contraste material independiente del operador sobre E-02.
+- Localización de la sesión/prompt de origen del 15/09.
+- Commit de esta entrada al repositorio.
+- Cierre, apertura o modificación de estado de C03 o C04.
+
+#### Riesgos
+
+- Tratar E-02 como concluyente antes del contraste del operador.
+- Leer la ausencia de commits del 15/09 como prueba de fabricación en vez de ausencia de evidencia.
+- Reanudar la arqueología del origen sin fijar primero este hallazgo.
+
+#### Pendientes
+
+- Contraste material del operador sobre E-02.
+- Localizar la sesión/prompt de ChatGPT de PUERTO-CERTERO-001 y, si existe, la de "C03=CERRADO".
+- Decidir si esta entrada se incorpora tal cual tras el contraste, o se corrige.
+
+#### Autoría y autorización
+
+**Fuente declarativa:** Juan Manuel Díaz Gerard — operador.
+**Redacción asistida por:** Claude.
+**Autoriza incorporación:** Juan Manuel Díaz Gerard — autorización expresa emitida el 2026-09-16, en conversación de voz con Claude.
+
+#### Estados
+
+**Estado del registro:** `BORRADOR APROBADO — INCORPORACIÓN PENDIENTE`
+**Estado de la acción:** `PROPUESTA`
+**Integración técnica:** `NO EJECUTADA`
 **Autorización de reanudación:** — (ninguna)
 
 #### Correcciones
