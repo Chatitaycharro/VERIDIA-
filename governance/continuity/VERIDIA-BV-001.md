@@ -297,3 +297,34 @@ autoriza la ejecución de C02 ni autoriza fusionar el PR #6.
 Consecuencia: GATE 1 permanece `NO CERRADO`, ahora por la ausencia de los
 referentes primarios E-P02 y E-P03, no por falta de contraste material del
 repositorio.
+
+
+Corrección 2026-09-18 — verificación directa del operador sobre CI run #21:
+
+Juan Manuel Díaz Gerard informó haber consultado personalmente la API de
+GitHub Actions y adoptó como verificados de primera mano los siguientes
+campos:
+
+- `id=35291003199`;
+- `run_number=21`;
+- `status=completed`;
+- `conclusion=success`;
+- `event=pull_request`;
+- `head_sha=a3b9aed3ca5237d77969902434cc866663ee03cd`;
+- `created_at=2026-09-18T00:23:44Z`;
+- `run_started_at=2026-09-18T00:23:44Z`;
+- `updated_at=2026-09-18T00:23:59Z`.
+
+Estado del run #21: **`VERIFICADO DIRECTAMENTE POR EL OPERADOR HUMANO`**.
+
+El run #20, ID `35125365152`, permanece diferenciado: está citado en el
+registro y fue corroborado por el canal técnico empleado para la revisión,
+pero el operador no logró reverificarlo directamente porque la API respondió
+con rate limit. Su estado respecto de esa comprobación personal es
+**`NO REVERIFICADO DIRECTAMENTE POR EL OPERADOR`**. El badge general
+`passing` es evidencia compatible, pero no sustituye la verificación del
+run puntual.
+
+Límite: el éxito de CI acredita la ejecución satisfactoria del workflow sobre
+el commit indicado. No acredita canonicidad del contenido, congelamiento,
+ejecución de C02 ni validez de C03, C04, AUTH_GATE o PUERTO-CERTERO-001.
