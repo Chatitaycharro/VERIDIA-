@@ -257,3 +257,43 @@ entrada a Git.
 Desde esta corrección: Estado del registro = REGISTRADO — EN REVISIÓN;
 Estado de la acción = EJECUTADA; Integración técnica = NO EJECUTADA (sin
 cambio).
+
+
+Corrección 2026-09-18 — cierre humano de E-P01:
+
+Juan Manuel Díaz Gerard, en calidad de operador humano, emitió la declaración
+expresa **“Adopto”** después de recibir el contraste material de los puntos
+(a)-(d) de E-02 y la verificación complementaria del workflow. La hora no
+quedó asentada en la fuente disponible.
+
+Alcance adoptado:
+
+- `refs/pull/6/head` corresponde a
+  `28a21f953a11f3ccf0a604cf1f1dded40bdbcb20`;
+- `main..PR #6` contiene 24 commits;
+- `main...PR #6` contiene 19 archivos, 1055 inserciones y 0 borrados;
+- existe el commit
+  `07be5f1e9e6edeb9a599fb48ff4064d329b2fc84` y su regla G1;
+- no se encontraron commits fechados 2026-09-15 en las ocho ramas revisadas;
+- no se encontró rastro previo de `C04` o `PUERTO-CERTERO` en mensajes o
+  contenidos del historial, fuera de la entrada que investiga su origen;
+- `PROVENANCE-MATRIX.md` identifica el canal
+  `chatgpt-codex-connector` (OpenAI);
+- existe el commit
+  `519c5c6f82adb10758db67ec47449d5b35008a00` con los metadatos registrados;
+- el workflow `SAI C02 Integrity`, run #20, ID `35125365152`, asociado a
+  `28a21f953a11f3ccf0a604cf1f1dded40bdbcb20`, terminó con
+  `status=completed` y `conclusion=success`.
+
+E-P01 cambia de `PENDIENTE` a **`CERRADO — CONTRASTE MATERIAL ADOPTADO POR
+EL OPERADOR`**.
+
+Límite: esta adopción acredita el resultado negativo de búsqueda dentro del
+repositorio examinado. No demuestra inexistencia fuera del repositorio, no
+prueba fabricación y no canoniza C03, C04, AUTH_GATE ni
+PUERTO-CERTERO-001. Tampoco admite o congela el prerregistro C02 v0.4,
+autoriza la ejecución de C02 ni autoriza fusionar el PR #6.
+
+Consecuencia: GATE 1 permanece `NO CERRADO`, ahora por la ausencia de los
+referentes primarios E-P02 y E-P03, no por falta de contraste material del
+repositorio.
