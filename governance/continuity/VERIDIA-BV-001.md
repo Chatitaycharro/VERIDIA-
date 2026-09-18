@@ -86,6 +86,8 @@ Los campos opcionales pueden omitirse cuando no sean aplicables. La captura ordi
 
 - [BV-2026-09-13-001](#bv-2026-09-13-001--integración-móvil-preliminar-s25-ultramini-pchermes) — Integración móvil preliminar S25 Ultra–mini PC–Hermes — Registro: `REGISTRADO — EN REVISIÓN`; acción: `DETENIDA`; integración: `NO EJECUTADA`.
 
+- [BV-2026-09-18-001](#bv-2026-09-18-001--archivo-sin-fusión-de-pr-2-3-y-4) — Archivo sin fusión de PR #2, #3 y #4 — Registro: `REGISTRADO — EN REVISIÓN`; acción: `EJECUTADA`; integración: `EJECUTADA`.
+
 ## 7. Entradas
 
 ### BV-2026-09-13-001 — Integración móvil preliminar S25 Ultra–mini PC–Hermes
@@ -169,3 +171,88 @@ Detener la exploración técnica y someter la propuesta a revisión previa. Dise
 #### Correcciones
 
 Ninguna.
+
+### BV-2026-09-18-001 — Archivo sin fusión de PR #2, #3 y #4
+
+**Fecha:** 2026-09-18  
+**Hora de ejecución:** 07:12:39–07:12:42 UTC.
+
+#### Episodio
+
+Inventario de ramas y pull requests de `Chatitaycharro/VERIDIA-`; decisión y ejecución del cierre sin fusión de los PR #2, #3 y #4.
+
+#### Evidencia disponible
+
+- **E-01 — Primaria material.** Inspección directa del repositorio mediante GitHub el 2026-09-18, previa a la acción: ocho ramas remotas en total — `main` y siete ramas de trabajo (`agent/implement-veridia-agents`, `agent/veridia-agents-node18`, `agent/veridia-agents-node18-updates`, `evidence/harness-efddef7`, `feature/veridia-start-v1-strict`, `audit/dictamen-veridia-agents-001` y `agent/sai-c02-executable-v0.3`)— y seis PR abiertos, #1 a #6, todos en estado draft.
+- **E-02 — Primaria material.** `docs/audits/dictamen-veridia-agents-0de6d9613688.md`, en `audit/dictamen-veridia-agents-001`, concluye: “VALIDACIÓN ESTRUCTURAL FAVORABLE CON OBSERVACIONES. RUNTIME ENFORCEMENT NO DEMOSTRADO. PRODUCCIÓN NO AUTORIZADA.”
+- **E-03 — Primaria material.** `agents-runtime/docs/estado-final-integracion.md` y `docs/resumen-integracion-agentes-veridia-estado-final.md`, en `agent/veridia-agents-node18-updates`, registran CI y fixtures superados, PR en draft y fusión no autorizada.
+- **E-04 — Primaria material.** El PR #6, `agent/sai-c02-executable-v0.3 → main`, permanece abierto y draft; su título y descripción lo mantienen en cuarentena y pendiente de admisión humana.
+- **E-05 — Primaria declarativa.** Autorización expresa de Juan Manuel Díaz Gerard en esta conversación, el 2026-09-18, para cerrar sin fusionar los PR #2, #3 y #4, conservar sus ramas, no tocar los PR #5 y #6 e incorporar esta entrada.
+- **E-06 — Primaria material.** Respuesta posterior de GitHub: PR #2 cerrado a `2026-09-18T07:12:39Z`, PR #3 a `2026-09-18T07:12:40Z` y PR #4 a `2026-09-18T07:12:42Z`; los tres con `merged: false`.
+- **E-07 — Primaria material.** Verificación posterior: las siete ramas de trabajo continúan existentes; no se borró ninguna.
+- **E-08 — Primaria material.** La comparación de GitHub entre `agent/implement-veridia-agents` y `agent/veridia-agents-node18` devuelve `diverged` (`ahead_by: 28`, `behind_by: 15`); no demuestra que la primera carezca de contenido propio.
+
+#### Evidencia pendiente
+
+- **E-P01.** Decisión sobre el PR #1, `agent/implement-veridia-agents → main`, que permanece abierto y no fue incluido en la autorización de cierre.
+- **E-P02.** Decisión sobre el PR #5, que contiene el dictamen candidato y permanece abierto.
+- **E-P03.** Evaluación material de cualquier contenido exclusivo de `agent/implement-veridia-agents` antes de decidir su archivo.
+
+#### Inferencias
+
+- **I-01.** Los artefactos examinados acreditan validación estructural y fixtures, pero no runtime productivo ni autorización de producción.
+- **I-02 — PROVISIONAL.** El cierre sin fusión de los PR #2, #3 y #4 pospone esas líneas de trabajo frente a la consolidación de Veridia; no refuta por sí mismo sus diseños.
+- **I-03.** La línea de agentes no quedó archivada por completo porque el PR #1 permanece abierto y su rama diverge de `agent/veridia-agents-node18`.
+
+#### Decisión
+
+Cerrar sin fusionar los PR #2, #3 y #4 y conservar sus ramas. Mantener sin cambios los PR #1, #5 y #6. El destino de los PR #1 y #5 requiere decisiones separadas. La línea SAI-C02 del PR #6 permanece intacta y pendiente de admisión humana.
+
+#### Acciones ejecutadas
+
+- Inspección directa de ramas, PR y documentos referenciados.
+- Cierre sin fusión de los PR #2, #3 y #4.
+- Verificación de `merged: false` en los tres PR.
+- Verificación de conservación de las siete ramas de trabajo.
+- Incorporación de esta entrada y su línea de índice a `governance/continuity/VERIDIA-BV-001.md`.
+
+#### Acciones no ejecutadas
+
+- No se fusionó ningún PR.
+- No se borró ninguna rama.
+- No se modificaron ni cerraron los PR #1, #5 o #6.
+- No se ejecutó SAI-C02.
+- No se declaró canonicidad, congelamiento ni validez productiva de los artefactos archivados.
+
+#### Riesgos
+
+- Pérdida de trazabilidad si en el futuro se borran ramas sin una referencia previa a esta entrada.
+- Interpretar el archivo sin fusión como rechazo técnico, cuando la decisión sólo acredita cierre y posposición.
+- Tratar las ramas divergentes de agentes como una sucesión lineal sin comparar su contenido exclusivo.
+
+#### Pendientes
+
+- Decidir en sesión futura el destino del PR #1.
+- Decidir en sesión futura el destino del PR #5.
+- Mantener las ramas como registro histórico de solo lectura mientras esas decisiones permanezcan abiertas.
+
+#### Autoría y autorización
+
+**Fuente declarativa:** Juan Manuel Díaz Gerard.  
+**Redacción inicial asistida por:** Claude (Sonnet 5).  
+**Revisión, ejecución e incorporación asistidas por:** ChatGPT.  
+**Autoriza incorporación:** Juan Manuel Díaz Gerard — autorización expresa emitida el 2026-09-18.
+
+#### Estados
+
+**Estado del registro:** `REGISTRADO — EN REVISIÓN`  
+**Estado de la acción:** `EJECUTADA`  
+**Integración técnica:** `EJECUTADA`  
+**Autorización de reanudación:** — (ninguna)
+
+#### Correcciones
+
+- El inventario inicial afirmaba cinco PR abiertos (#2–#6); la inspección directa encontró seis (#1–#6).
+- Se retiró la inferencia de que `agent/implement-veridia-agents` no aportaba contenido no superado: GitHub reporta divergencia y esa afirmación no quedó demostrada.
+- El PR #1 se añadió como pendiente y no fue modificado.
+
