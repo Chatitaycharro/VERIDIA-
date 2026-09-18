@@ -88,6 +88,8 @@ Los campos opcionales pueden omitirse cuando no sean aplicables. La captura ordi
 
 - [BV-2026-09-18-001](#bv-2026-09-18-001--archivo-sin-fusión-de-pr-2-3-y-4) — Archivo sin fusión de PR #2, #3 y #4 — Registro: `REGISTRADO — EN REVISIÓN`; acción: `EJECUTADA`; integración: `EJECUTADA`.
 
+- [BV-2026-09-18-002](#bv-2026-09-18-002--cierre-sin-fusión-de-pr-1-y-pr-5) — Cierre sin fusión de PR #1 y PR #5 — Registro: `REGISTRADO — EN REVISIÓN`; acción: `EJECUTADA`; integración: `EJECUTADA`.
+
 ## 7. Entradas
 
 ### BV-2026-09-13-001 — Integración móvil preliminar S25 Ultra–mini PC–Hermes
@@ -255,4 +257,83 @@ Cerrar sin fusionar los PR #2, #3 y #4 y conservar sus ramas. Mantener sin cambi
 - El inventario inicial afirmaba cinco PR abiertos (#2–#6); la inspección directa encontró seis (#1–#6).
 - Se retiró la inferencia de que `agent/implement-veridia-agents` no aportaba contenido no superado: GitHub reporta divergencia y esa afirmación no quedó demostrada.
 - El PR #1 se añadió como pendiente y no fue modificado.
+
+### BV-2026-09-18-002 — Cierre sin fusión de PR #1 y PR #5
+
+**Fecha:** 2026-09-18
+
+#### Episodio
+
+Cierre sin fusión de PR #1 y PR #5; discrepancia de observación sobre el estado de PR #1 entre lecturas realizadas por ChatGPT y Claude.
+
+#### Evidencia disponible
+
+- **E-01 — Primaria.** PR #5 (`audit/dictamen-veridia-agents-001 → main`): confirmado cerrado por Claude (Sonnet 5) mediante lectura directa de GitHub, cerrado por Chatitaycharro el 2026-09-18. Coincide con lo reportado por ChatGPT.
+- **E-02 — Primaria.** Dos lecturas de la página de PR #1 por Claude (Sonnet 5), la segunda con parámetro anti-caché, ambas previas al reintento: la página mostraba la etiqueta `Draft` y no mostraba ningún evento de cierre visible. Esta observación no determina por sí sola el valor del campo `state`.
+- **E-03 — Secundaria, no corroborada independientemente por Claude.** Declaración de ChatGPT: una consulta a la API de GitHub para PR #1 devolvió `state: closed`, `merged: false`, `closed_at: 2026-09-18T07:29:04Z`, con evento de cierre por Chatitaycharro. Tres intentos de Claude de consultar esa API fueron rechazados con error 403 por límite de tasa.
+- **E-04 — Primaria.** Tercera lectura de la página por Claude (Sonnet 5), con un segundo parámetro anti-caché y posterior al reintento reportado: estado `Closed`, con evento de cierre por Chatitaycharro visible.
+- **E-05 — Secundaria.** Declaración de ChatGPT: el reintento del cierre conservó el mismo `closed_at: 2026-09-18T07:29:04Z`, interpretado como indicio de que PR #1 ya estaba cerrado antes del reintento.
+- **E-06 — Corrección declarativa.** ChatGPT resumió posteriormente esas lecturas como “tres consultas independientes”. La formulación exacta es: tres consultas previas al reintento dentro del ecosistema API de GitHub —dos rutas de estado del PR y una ruta de eventos—, no tres fuentes independientes. Dos lecturas contemporáneas de la interfaz realizadas por Claude mostraron una representación distinta.
+- **E-07 — Primaria.** Lectura directa de GitHub por Claude (Sonnet 5): PR #1 y PR #5 aparecen cerrados y no fusionados; las ramas `agent/implement-veridia-agents` y `audit/dictamen-veridia-agents-001` continúan existentes.
+- **E-08 — Primaria declarativa.** Juan Manuel Díaz Gerard autorizó expresamente en esta conversación, el 2026-09-18, añadir `BV-2026-09-18-002` y su línea de índice a la Bitácora Viva.
+
+#### Evidencia pendiente
+
+- **E-P01.** Corroborar independientemente `closed_at: 2026-09-18T07:29:04Z` y el actor `Chatitaycharro` cuando cese el límite de tasa de la API para Claude.
+- **E-P02.** Determinar, si llega a existir evidencia suficiente, la causa técnica de que dos lecturas directas de la página no mostraran el cierre que ChatGPT reportó como ya existente: caché de GitHub, retraso de interfaz u otra causa. Con la evidencia disponible, la causa es incognoscible.
+
+#### Inferencias
+
+- **I-01.** El resultado material final está acreditado por evidencia primaria obtenida por Claude para ambos PR: PR #1 y PR #5 cerrados, no fusionados y con sus ramas preservadas.
+- **I-02 — PROVISIONAL.** Si son exactas E-03 y E-05, PR #1 ya estaba cerrado antes del reintento porque el timestamp permaneció inalterado. Esta inferencia depende del reporte de ChatGPT y todavía carece de corroboración independiente por Claude.
+
+#### Decisión
+
+Mantener PR #1 y PR #5 cerrados, sin fusión y con ramas preservadas. Incorporar esta entrada por autorización expresa de Juan Manuel Díaz Gerard.
+
+#### Acciones ejecutadas
+
+- Cierre sin fusión de PR #1 y PR #5 por ChatGPT bajo autorización expresa de Juan Manuel Díaz Gerard.
+- Verificación repetida del estado de PR #1 y PR #5 por Claude: tres lecturas de página y tres intentos de API bloqueados por límite de tasa.
+- Redacción y corrección cruzada de este registro.
+- Incorporación de esta entrada y su línea de índice a `governance/continuity/VERIDIA-BV-001.md`.
+
+#### Acciones no ejecutadas
+
+- No se fusionó PR #1 ni PR #5.
+- No se borró ninguna de sus ramas.
+- No se determinó la causa de la discrepancia de observación en PR #1.
+
+#### Riesgos
+
+- Registrar como hecho una reconstrucción no corroborada independientemente sentaría un precedente contrario a la finalidad de esta Bitácora.
+- El límite de tasa de la API puede impedir la verificación oportuna de futuras acciones materiales.
+- Una etiqueta de interfaz como `Draft` puede confundirse indebidamente con el valor material del campo `state`.
+
+#### Pendientes
+
+- Corroborar E-P01 cuando el límite de tasa lo permita.
+- Mantener E-P02 como incognoscible mientras no aparezca evidencia nueva.
+
+#### Autoría y autorización
+
+**Fuente declarativa:** Juan Manuel Díaz Gerard; ChatGPT respecto de la ejecución y reconstrucción; Claude respecto de su verificación independiente.  
+**Redacción asistida por:** Claude (Sonnet 5), con correcciones de ChatGPT incorporadas tras revisión propia.  
+**Revisión e incorporación asistidas por:** ChatGPT.  
+**Autoriza incorporación:** Juan Manuel Díaz Gerard — autorización expresa emitida el 2026-09-18.
+
+#### Estados
+
+**Estado del registro:** `REGISTRADO — EN REVISIÓN`  
+**Estado de la acción:** `EJECUTADA` — cierres de PR #1 y PR #5.  
+**Integración técnica:** `EJECUTADA` — entrada incorporada mediante el commit que contiene este registro.  
+**Autorización de reanudación:** — (ninguna)
+
+#### Correcciones
+
+- Se retiró la afirmación de que E-02 demuestra que el campo `state` estuviera en `open`; queda limitada a lo observado: etiqueta y ausencia de evento visible.
+- Se reformuló E-06 para distinguir consultas dentro de un mismo ecosistema API de fuentes independientes.
+- Se retiró la inferencia original que usaba la ausencia de discrepancia en PR #5 como evidencia sobre la causa de la discrepancia en PR #1; fue sustituida por una inferencia condicional explícita.
+- Se separaron el estado de la acción y el de la integración técnica.
+- Se corrigió la decisión: los cierres ya estaban autorizados y ejecutados; la incorporación fue autorizada posteriormente.
 
