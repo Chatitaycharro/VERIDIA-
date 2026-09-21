@@ -12,6 +12,26 @@ Comprobar si SAI conserva una cadena reconstruible:
 
 No se evalúa inteligencia general. Se evalúan trazabilidad, integridad procesal y corregibilidad.
 
+## 1.1 Independencia normativa de referentes externos
+
+Este prerregistro es autosuficiente para definir C02. No depende normativamente de C03, C04, `AUTH_GATE`, `PUERTO-CERTERO-001`, EX-02, PR-001, MLT-CON-001, R-CAN-001 ni R-CAN-003.
+
+Esos referentes solo podrán aportar reglas, criterios, autorizaciones o evidencia si, antes del congelamiento, se incorporan expresamente:
+
+1. su texto primario completo;
+2. su identificación y hash verificable;
+3. el acto humano que los admite para esta corrida;
+4. la referencia exacta desde este prerregistro.
+
+Mientras esas condiciones no se cumplan:
+
+- su ausencia, disputa o estado pendiente no bloquea la admisión, el congelamiento ni la ejecución de C02;
+- no pueden completar vacíos, modificar criterios ni justificar decisiones de C02;
+- E-P02 y E-P03 permanecen como pendientes de arqueología y continuidad, fuera del camino crítico de C02;
+- toda coincidencia terminológica se considera no normativa.
+
+La incorporación posterior de cualquiera de esos referentes requerirá una nueva versión del prerregistro y un nuevo congelamiento; no podrá aplicarse retroactivamente a R0, R1 o R2.
+
 ## 2. Roles y exclusión mutua
 
 Roles obligatorios:
