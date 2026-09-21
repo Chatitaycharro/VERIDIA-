@@ -1,0 +1,36 @@
+name: SAI C02 Integrity
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/SAI-C02-20260908/**'
+      - '.github/workflows/sai-c02-integrity.yml'
+  push:
+    branches:
+      - agent/sai-c02-executable-v0.3
+    paths:
+      - 'experiments/SAI-C02-20260908/**'
+      - '.github/workflows/sai-c02-integrity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Integrity (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s experiments/SAI-C02-20260908/tests -p 'test_*.py' -v
+      - name: Build and verify manifest
+        run: |
+          python experiments/SAI-C02-20260908/scripts/c02.py prepare
+          python -c "from pathlib import Path; import re; p=Path('experiments/SAI-C02-20260908/executor-package/MANIFEST.sha256'); assert p.is_file(); assert all(re.fullmatch(r'[0-9a-f]{64}  .+', x) for x in p.read_text(encoding='utf-8').splitlines())"
