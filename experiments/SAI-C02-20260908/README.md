@@ -4,6 +4,12 @@ Estado: **CANDIDATA EN REVISIÓN / NO CONGELADA / NO EJECUTADA**.
 
 Este directorio contiene infraestructura rescatable para la Corrida 02. Su existencia y CI no acreditan admisión canónica ni resultados.
 
+## Alcance separado
+
+Este PR contiene únicamente el paquete experimental C02 y sus controles técnicos. La Bitácora Viva se concilia por separado en el PR #7; no forma parte del objeto experimental de este PR.
+
+C02 v0.4-candidate es normativamente autosuficiente. C03, C04, `AUTH_GATE`, `PUERTO-CERTERO-001`, EX-02, PR-001, MLT-CON-001 y R-CAN-001/003 no son dependencias de admisión, congelamiento o ejecución salvo incorporación primaria, hasheada y admitida antes del congelamiento.
+
 ## Objetivo propuesto
 
 Evaluar la cadena:
