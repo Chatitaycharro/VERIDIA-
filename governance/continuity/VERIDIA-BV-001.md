@@ -85,7 +85,10 @@ Los campos opcionales pueden omitirse cuando no sean aplicables. La captura ordi
 ## 6. Índice
 
 - [BV-2026-09-13-001](#bv-2026-09-13-001--integración-móvil-preliminar-s25-ultramini-pchermes) — Integración móvil preliminar S25 Ultra–mini PC–Hermes — Registro: `REGISTRADO — EN REVISIÓN`; acción: `DETENIDA`; integración: `NO EJECUTADA`.
-- [BV-2026-09-16-001](#bv-2026-09-16-001--verificación-material-del-repositorio-y-origen-de-c03c04puerto-certero-001) — Verificación material del repositorio y origen de C03/C04/PUERTO-CERTERO-001 — Registro: `BORRADOR APROBADO — INCORPORACIÓN PENDIENTE`; acción: `PROPUESTA`; integración: `NO EJECUTADA`.
+
+- [BV-2026-09-18-001](#bv-2026-09-18-001--archivo-sin-fusión-de-pr-2-3-y-4) — Archivo sin fusión de PR #2, #3 y #4 — Registro: `REGISTRADO — EN REVISIÓN`; acción: `EJECUTADA`; integración: `EJECUTADA`.
+
+- [BV-2026-09-18-002](#bv-2026-09-18-002--cierre-sin-fusión-de-pr-1-y-pr-5) — Cierre sin fusión de PR #1 y PR #5 — Registro: `REGISTRADO — EN REVISIÓN`; acción: `EJECUTADA`; integración: `EJECUTADA`.
 
 ## 7. Entradas
 
@@ -171,160 +174,166 @@ Detener la exploración técnica y someter la propuesta a revisión previa. Dise
 
 Ninguna.
 
-### BV-2026-09-16-001 — Verificación material del repositorio y origen de C03/C04/PUERTO-CERTERO-001
+### BV-2026-09-18-001 — Archivo sin fusión de PR #2, #3 y #4
 
-**Fecha:** 2026-09-16
-**Hora:** no asentada en la fuente disponible.
+**Fecha:** 2026-09-18  
+**Hora de ejecución:** 07:12:39–07:12:42 UTC.
+
+#### Episodio
+
+Inventario de ramas y pull requests de `Chatitaycharro/VERIDIA-`; decisión y ejecución del cierre sin fusión de los PR #2, #3 y #4.
 
 #### Evidencia disponible
 
-- **E-01 — Primaria.** Existencia, reglas y estructura de este mismo archivo VERIDIA-BV-001.md; su única entrada previa (BV-2026-09-13-001) ya aplica la separación evidencia primaria/secundaria y mantiene provisionales las inferencias dependientes de una conversación externa no recuperada.
-- **E-02 — Secundaria, reportada por sesión de Claude, pendiente de contraste material directo por el operador.** Resultado de clonar y revisar el repositorio público github.com/Chatitaycharro/VERIDIA- (siete ramas): (a) commit 07be5f1 en agent/sai-c02-executable-v0.3, fechado 2026-09-16T01:13:19-06:00, archivo experiments/SAI-C02-20260908/CLEAN-RESTART.md, que define G1 para SAI-C02 y excluye explícitamente a "C03" y "AUTH_GATE" de presunción canónica sin texto/acto humano verificable; (b) ausencia de todo commit fechado 2026-09-15 en cualquier rama; (c) ausencia de toda mención a "C04" o "PUERTO-CERTERO" en mensajes de commit y contenido de archivos de la historia completa; (d) canal de incorporación del PR #6 (paquete técnico de C02) identificado en PROVENANCE-MATRIX.md como chatgpt-codex-connector (OpenAI).
+- **E-01 — Primaria material.** Inspección directa del repositorio mediante GitHub el 2026-09-18, previa a la acción: ocho ramas remotas en total — `main` y siete ramas de trabajo (`agent/implement-veridia-agents`, `agent/veridia-agents-node18`, `agent/veridia-agents-node18-updates`, `evidence/harness-efddef7`, `feature/veridia-start-v1-strict`, `audit/dictamen-veridia-agents-001` y `agent/sai-c02-executable-v0.3`)— y seis PR abiertos, #1 a #6, todos en estado draft.
+- **E-02 — Primaria material.** `docs/audits/dictamen-veridia-agents-0de6d9613688.md`, en `audit/dictamen-veridia-agents-001`, concluye: “VALIDACIÓN ESTRUCTURAL FAVORABLE CON OBSERVACIONES. RUNTIME ENFORCEMENT NO DEMOSTRADO. PRODUCCIÓN NO AUTORIZADA.”
+- **E-03 — Primaria material.** `agents-runtime/docs/estado-final-integracion.md` y `docs/resumen-integracion-agentes-veridia-estado-final.md`, en `agent/veridia-agents-node18-updates`, registran CI y fixtures superados, PR en draft y fusión no autorizada.
+- **E-04 — Primaria material.** El PR #6, `agent/sai-c02-executable-v0.3 → main`, permanece abierto y draft; su título y descripción lo mantienen en cuarentena y pendiente de admisión humana.
+- **E-05 — Primaria declarativa.** Autorización expresa de Juan Manuel Díaz Gerard en esta conversación, el 2026-09-18, para cerrar sin fusionar los PR #2, #3 y #4, conservar sus ramas, no tocar los PR #5 y #6 e incorporar esta entrada.
+- **E-06 — Primaria material.** Respuesta posterior de GitHub: PR #2 cerrado a `2026-09-18T07:12:39Z`, PR #3 a `2026-09-18T07:12:40Z` y PR #4 a `2026-09-18T07:12:42Z`; los tres con `merged: false`.
+- **E-07 — Primaria material.** Verificación posterior: las siete ramas de trabajo continúan existentes; no se borró ninguna.
+- **E-08 — Primaria material.** La comparación de GitHub entre `agent/implement-veridia-agents` y `agent/veridia-agents-node18` devuelve `diverged` (`ahead_by: 28`, `behind_by: 15`); no demuestra que la primera carezca de contenido propio.
 
 #### Evidencia pendiente
 
-- **E-P01.** Contraste material independiente del operador sobre cada punto de E-02.
-- **E-P02.** Sesión, prompt e insumos de ChatGPT que originaron PUERTO-CERTERO-001.
-- **E-P03.** Sesión, prompt e insumos —si existen— que originaron la declaración "C03=CERRADO" y la apertura de C04 el 15/09.
+- **E-P01.** Decisión sobre el PR #1, `agent/implement-veridia-agents → main`, que permanece abierto y no fue incluido en la autorización de cierre.
+- **E-P02.** Decisión sobre el PR #5, que contiene el dictamen candidato y permanece abierto.
+- **E-P03.** Evaluación material de cualquier contenido exclusivo de `agent/implement-veridia-agents` antes de decidir su archivo.
 
 #### Inferencias
 
-- **I-01 — PROVISIONAL.** Existe al menos un patrón que amerita investigar contaminación/procedencia entre sesiones y agentes: el canal chatgpt-codex-connector del PR #6 real coincide en tipo de origen con el reportado para PUERTO-CERTERO-001.
-- **I-02 — PROVISIONAL.** De lo anterior no se infiere que C03, C04 o AUTH_GATE sean fabricados — solo que su promoción a estado canónico carece, hasta ahora, de sustento verificable en la fuente que se declara única.
-
-Las inferencias I-01 e I-02 permanecen provisionales hasta el contraste material del operador sobre E-02 y hasta localizar E-P02 y E-P03.
+- **I-01.** Los artefactos examinados acreditan validación estructural y fixtures, pero no runtime productivo ni autorización de producción.
+- **I-02 — PROVISIONAL.** El cierre sin fusión de los PR #2, #3 y #4 pospone esas líneas de trabajo frente a la consolidación de Veridia; no refuta por sí mismo sus diseños.
+- **I-03.** La línea de agentes no quedó archivada por completo porque el PR #1 permanece abierto y su rama diverge de `agent/veridia-agents-node18`.
 
 #### Decisión
 
-GATE 1 = NO CERRADO se mantiene por fundamento independiente ya fijado (estados de C03 y C04 en episodios previos). Esta entrada documenta el episodio investigativo; no reabre, cierra ni canoniza C03, C04 ni AUTH_GATE.
+Cerrar sin fusionar los PR #2, #3 y #4 y conservar sus ramas. Mantener sin cambios los PR #1, #5 y #6. El destino de los PR #1 y #5 requiere decisiones separadas. La línea SAI-C02 del PR #6 permanece intacta y pendiente de admisión humana.
 
 #### Acciones ejecutadas
 
-- Clonación y revisión del repositorio por sesión de Claude (ver E-02), sujeta a contraste.
-- Redacción de esta entrada como borrador.
-- Autorización expresa de incorporación por Juan Manuel Díaz Gerard, en conversación de voz, 2026-09-16.
+- Inspección directa de ramas, PR y documentos referenciados.
+- Cierre sin fusión de los PR #2, #3 y #4.
+- Verificación de `merged: false` en los tres PR.
+- Verificación de conservación de las siete ramas de trabajo.
+- Incorporación de esta entrada y su línea de índice a `governance/continuity/VERIDIA-BV-001.md`.
 
 #### Acciones no ejecutadas
 
-- Contraste material independiente del operador sobre E-02.
-- Localización de la sesión/prompt de origen del 15/09.
-- Commit de esta entrada al repositorio.
-- Cierre, apertura o modificación de estado de C03 o C04.
+- No se fusionó ningún PR.
+- No se borró ninguna rama.
+- No se modificaron ni cerraron los PR #1, #5 o #6.
+- No se ejecutó SAI-C02.
+- No se declaró canonicidad, congelamiento ni validez productiva de los artefactos archivados.
 
 #### Riesgos
 
-- Tratar E-02 como concluyente antes del contraste del operador.
-- Leer la ausencia de commits del 15/09 como prueba de fabricación en vez de ausencia de evidencia.
-- Reanudar la arqueología del origen sin fijar primero este hallazgo.
+- Pérdida de trazabilidad si en el futuro se borran ramas sin una referencia previa a esta entrada.
+- Interpretar el archivo sin fusión como rechazo técnico, cuando la decisión sólo acredita cierre y posposición.
+- Tratar las ramas divergentes de agentes como una sucesión lineal sin comparar su contenido exclusivo.
 
 #### Pendientes
 
-- Contraste material del operador sobre E-02.
-- Localizar la sesión/prompt de ChatGPT de PUERTO-CERTERO-001 y, si existe, la de "C03=CERRADO".
-- Decidir si esta entrada se incorpora tal cual tras el contraste, o se corrige.
+- Decidir en sesión futura el destino del PR #1.
+- Decidir en sesión futura el destino del PR #5.
+- Mantener las ramas como registro histórico de solo lectura mientras esas decisiones permanezcan abiertas.
 
 #### Autoría y autorización
 
-**Fuente declarativa:** Juan Manuel Díaz Gerard — operador.
-**Redacción asistida por:** Claude.
-**Autoriza incorporación:** Juan Manuel Díaz Gerard — autorización expresa emitida el 2026-09-16, en conversación de voz con Claude.
+**Fuente declarativa:** Juan Manuel Díaz Gerard.  
+**Redacción inicial asistida por:** Claude (Sonnet 5).  
+**Revisión, ejecución e incorporación asistidas por:** ChatGPT.  
+**Autoriza incorporación:** Juan Manuel Díaz Gerard — autorización expresa emitida el 2026-09-18.
 
 #### Estados
 
-**Estado del registro:** `BORRADOR APROBADO — INCORPORACIÓN PENDIENTE`
-**Estado de la acción:** `PROPUESTA`
-**Integración técnica:** `NO EJECUTADA`
+**Estado del registro:** `REGISTRADO — EN REVISIÓN`  
+**Estado de la acción:** `EJECUTADA`  
+**Integración técnica:** `EJECUTADA`  
 **Autorización de reanudación:** — (ninguna)
 
 #### Correcciones
 
-Corrección 2026-09-16 (posterior al commit): esta entrada fue incorporada
-mediante el commit 519c5c6f82adb10758db67ec47449d5b35008a00 (autor
-Chatitaycharro <jmdiazgerard@gmail.com>, 2026-09-16T10:48:34-06:00),
-verificado independientemente por Claude contra el repositorio clonado: el
-commit existe en origin/agent/sai-c02-executable-v0.3 y el blob
-069b7d65bb0e3183fc70ee57dd6b659e0ab06fa5 coincide exactamente con el texto
-autorizado. Esta verificación cubre solo la existencia y fidelidad del
-commit, no los puntos (a)-(d) de E-02; E-P01 permanece pendiente de
-contraste material independiente del operador sobre esos puntos.
+- El inventario inicial afirmaba cinco PR abiertos (#2–#6); la inspección directa encontró seis (#1–#6).
+- Se retiró la inferencia de que `agent/implement-veridia-agents` no aportaba contenido no superado: GitHub reporta divergencia y esa afirmación no quedó demostrada.
+- El PR #1 se añadió como pendiente y no fue modificado.
 
-Ese commit deja desactualizada, sin alterarla, la línea "Commit de esta
-entrada al repositorio" en acciones no ejecutadas. "Integración técnica"
-no cambia: se refiere a la integración del episodio investigado —origen de
-C03/C04/PUERTO-CERTERO-001—, no a la incorporación registral de esta
-entrada a Git.
+### BV-2026-09-18-002 — Cierre sin fusión de PR #1 y PR #5
 
-Desde esta corrección: Estado del registro = REGISTRADO — EN REVISIÓN;
-Estado de la acción = EJECUTADA; Integración técnica = NO EJECUTADA (sin
-cambio).
+**Fecha:** 2026-09-18
 
+#### Episodio
 
-Corrección 2026-09-18 — cierre humano de E-P01:
+Cierre sin fusión de PR #1 y PR #5; discrepancia de observación sobre el estado de PR #1 entre lecturas realizadas por ChatGPT y Claude.
 
-Juan Manuel Díaz Gerard, en calidad de operador humano, emitió la declaración
-expresa **“Adopto”** después de recibir el contraste material de los puntos
-(a)-(d) de E-02 y la verificación complementaria del workflow. La hora no
-quedó asentada en la fuente disponible.
+#### Evidencia disponible
 
-Alcance adoptado:
+- **E-01 — Primaria.** PR #5 (`audit/dictamen-veridia-agents-001 → main`): confirmado cerrado por Claude (Sonnet 5) mediante lectura directa de GitHub, cerrado por Chatitaycharro el 2026-09-18. Coincide con lo reportado por ChatGPT.
+- **E-02 — Primaria.** Dos lecturas de la página de PR #1 por Claude (Sonnet 5), la segunda con parámetro anti-caché, ambas previas al reintento: la página mostraba la etiqueta `Draft` y no mostraba ningún evento de cierre visible. Esta observación no determina por sí sola el valor del campo `state`.
+- **E-03 — Secundaria, no corroborada independientemente por Claude.** Declaración de ChatGPT: una consulta a la API de GitHub para PR #1 devolvió `state: closed`, `merged: false`, `closed_at: 2026-09-18T07:29:04Z`, con evento de cierre por Chatitaycharro. Tres intentos de Claude de consultar esa API fueron rechazados con error 403 por límite de tasa.
+- **E-04 — Primaria.** Tercera lectura de la página por Claude (Sonnet 5), con un segundo parámetro anti-caché y posterior al reintento reportado: estado `Closed`, con evento de cierre por Chatitaycharro visible.
+- **E-05 — Secundaria.** Declaración de ChatGPT: el reintento del cierre conservó el mismo `closed_at: 2026-09-18T07:29:04Z`, interpretado como indicio de que PR #1 ya estaba cerrado antes del reintento.
+- **E-06 — Corrección declarativa.** ChatGPT resumió posteriormente esas lecturas como “tres consultas independientes”. La formulación exacta es: tres consultas previas al reintento dentro del ecosistema API de GitHub —dos rutas de estado del PR y una ruta de eventos—, no tres fuentes independientes. Dos lecturas contemporáneas de la interfaz realizadas por Claude mostraron una representación distinta.
+- **E-07 — Primaria.** Lectura directa de GitHub por Claude (Sonnet 5): PR #1 y PR #5 aparecen cerrados y no fusionados; las ramas `agent/implement-veridia-agents` y `audit/dictamen-veridia-agents-001` continúan existentes.
+- **E-08 — Primaria declarativa.** Juan Manuel Díaz Gerard autorizó expresamente en esta conversación, el 2026-09-18, añadir `BV-2026-09-18-002` y su línea de índice a la Bitácora Viva.
 
-- `refs/pull/6/head` corresponde a
-  `28a21f953a11f3ccf0a604cf1f1dded40bdbcb20`;
-- `main..PR #6` contiene 24 commits;
-- `main...PR #6` contiene 19 archivos, 1055 inserciones y 0 borrados;
-- existe el commit
-  `07be5f1e9e6edeb9a599fb48ff4064d329b2fc84` y su regla G1;
-- no se encontraron commits fechados 2026-09-15 en las ocho ramas revisadas;
-- no se encontró rastro previo de `C04` o `PUERTO-CERTERO` en mensajes o
-  contenidos del historial, fuera de la entrada que investiga su origen;
-- `PROVENANCE-MATRIX.md` identifica el canal
-  `chatgpt-codex-connector` (OpenAI);
-- existe el commit
-  `519c5c6f82adb10758db67ec47449d5b35008a00` con los metadatos registrados;
-- el workflow `SAI C02 Integrity`, run #20, ID `35125365152`, asociado a
-  `28a21f953a11f3ccf0a604cf1f1dded40bdbcb20`, terminó con
-  `status=completed` y `conclusion=success`.
+#### Evidencia pendiente
 
-E-P01 cambia de `PENDIENTE` a **`CERRADO — CONTRASTE MATERIAL ADOPTADO POR
-EL OPERADOR`**.
+- **E-P01.** Corroborar independientemente `closed_at: 2026-09-18T07:29:04Z` y el actor `Chatitaycharro` cuando cese el límite de tasa de la API para Claude.
+- **E-P02.** Determinar, si llega a existir evidencia suficiente, la causa técnica de que dos lecturas directas de la página no mostraran el cierre que ChatGPT reportó como ya existente: caché de GitHub, retraso de interfaz u otra causa. Con la evidencia disponible, la causa es incognoscible.
 
-Límite: esta adopción acredita el resultado negativo de búsqueda dentro del
-repositorio examinado. No demuestra inexistencia fuera del repositorio, no
-prueba fabricación y no canoniza C03, C04, AUTH_GATE ni
-PUERTO-CERTERO-001. Tampoco admite o congela el prerregistro C02 v0.4,
-autoriza la ejecución de C02 ni autoriza fusionar el PR #6.
+#### Inferencias
 
-Consecuencia: GATE 1 permanece `NO CERRADO`, ahora por la ausencia de los
-referentes primarios E-P02 y E-P03, no por falta de contraste material del
-repositorio.
+- **I-01.** El resultado material final está acreditado por evidencia primaria obtenida por Claude para ambos PR: PR #1 y PR #5 cerrados, no fusionados y con sus ramas preservadas.
+- **I-02 — PROVISIONAL.** Si son exactas E-03 y E-05, PR #1 ya estaba cerrado antes del reintento porque el timestamp permaneció inalterado. Esta inferencia depende del reporte de ChatGPT y todavía carece de corroboración independiente por Claude.
 
+#### Decisión
 
-Corrección 2026-09-18 — verificación directa del operador sobre CI run #21:
+Mantener PR #1 y PR #5 cerrados, sin fusión y con ramas preservadas. Incorporar esta entrada por autorización expresa de Juan Manuel Díaz Gerard.
 
-Juan Manuel Díaz Gerard informó haber consultado personalmente la API de
-GitHub Actions y adoptó como verificados de primera mano los siguientes
-campos:
+#### Acciones ejecutadas
 
-- `id=35291003199`;
-- `run_number=21`;
-- `status=completed`;
-- `conclusion=success`;
-- `event=pull_request`;
-- `head_sha=a3b9aed3ca5237d77969902434cc866663ee03cd`;
-- `created_at=2026-09-18T00:23:44Z`;
-- `run_started_at=2026-09-18T00:23:44Z`;
-- `updated_at=2026-09-18T00:23:59Z`.
+- Cierre sin fusión de PR #1 y PR #5 por ChatGPT bajo autorización expresa de Juan Manuel Díaz Gerard.
+- Verificación repetida del estado de PR #1 y PR #5 por Claude: tres lecturas de página y tres intentos de API bloqueados por límite de tasa.
+- Redacción y corrección cruzada de este registro.
+- Incorporación de esta entrada y su línea de índice a `governance/continuity/VERIDIA-BV-001.md`.
 
-Estado del run #21: **`VERIFICADO DIRECTAMENTE POR EL OPERADOR HUMANO`**.
+#### Acciones no ejecutadas
 
-El run #20, ID `35125365152`, permanece diferenciado: está citado en el
-registro y fue corroborado por el canal técnico empleado para la revisión,
-pero el operador no logró reverificarlo directamente porque la API respondió
-con rate limit. Su estado respecto de esa comprobación personal es
-**`NO REVERIFICADO DIRECTAMENTE POR EL OPERADOR`**. El badge general
-`passing` es evidencia compatible, pero no sustituye la verificación del
-run puntual.
+- No se fusionó PR #1 ni PR #5.
+- No se borró ninguna de sus ramas.
+- No se determinó la causa de la discrepancia de observación en PR #1.
 
-Límite: el éxito de CI acredita la ejecución satisfactoria del workflow sobre
-el commit indicado. No acredita canonicidad del contenido, congelamiento,
-ejecución de C02 ni validez de C03, C04, AUTH_GATE o PUERTO-CERTERO-001.
+#### Riesgos
+
+- Registrar como hecho una reconstrucción no corroborada independientemente sentaría un precedente contrario a la finalidad de esta Bitácora.
+- El límite de tasa de la API puede impedir la verificación oportuna de futuras acciones materiales.
+- Una etiqueta de interfaz como `Draft` puede confundirse indebidamente con el valor material del campo `state`.
+
+#### Pendientes
+
+- Corroborar E-P01 cuando el límite de tasa lo permita.
+- Mantener E-P02 como incognoscible mientras no aparezca evidencia nueva.
+
+#### Autoría y autorización
+
+**Fuente declarativa:** Juan Manuel Díaz Gerard; ChatGPT respecto de la ejecución y reconstrucción; Claude respecto de su verificación independiente.  
+**Redacción asistida por:** Claude (Sonnet 5), con correcciones de ChatGPT incorporadas tras revisión propia.  
+**Revisión e incorporación asistidas por:** ChatGPT.  
+**Autoriza incorporación:** Juan Manuel Díaz Gerard — autorización expresa emitida el 2026-09-18.
+
+#### Estados
+
+**Estado del registro:** `REGISTRADO — EN REVISIÓN`  
+**Estado de la acción:** `EJECUTADA` — cierres de PR #1 y PR #5.  
+**Integración técnica:** `EJECUTADA` — entrada incorporada mediante el commit que contiene este registro.  
+**Autorización de reanudación:** — (ninguna)
+
+#### Correcciones
+
+- Se retiró la afirmación de que E-02 demuestra que el campo `state` estuviera en `open`; queda limitada a lo observado: etiqueta y ausencia de evento visible.
+- Se reformuló E-06 para distinguir consultas dentro de un mismo ecosistema API de fuentes independientes.
+- Se retiró la inferencia original que usaba la ausencia de discrepancia en PR #5 como evidencia sobre la causa de la discrepancia en PR #1; fue sustituida por una inferencia condicional explícita.
+- Se separaron el estado de la acción y el de la integración técnica.
+- Se corrigió la decisión: los cierres ya estaban autorizados y ejecutados; la incorporación fue autorizada posteriormente.
+
