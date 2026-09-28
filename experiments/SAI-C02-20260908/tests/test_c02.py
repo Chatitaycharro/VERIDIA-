@@ -89,7 +89,7 @@ class C02Tests(unittest.TestCase):
         self.assertIn("ADMISIBLE + VERIFICABLE + FALLA_TÉCNICA", refutation)
         self.assertIn("REFUTADA_EN_RECONSTRUCCIÓN", refutation)
         self.assertIn("dictamen firmado", validity)
-        self.assertIn("Operador no tiene veto", validity)
+        self.assertIn("no tiene poder de veto", validity)
         self.assertIn("una V3 suspendida nunca recupera vigencia", validity)
 
 
