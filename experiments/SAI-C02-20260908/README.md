@@ -8,7 +8,7 @@ Este directorio contiene infraestructura rescatable para la Corrida 02. Su exist
 
 Este PR contiene únicamente el paquete experimental C02 y sus controles técnicos. La Bitácora Viva se concilia por separado en el PR #7; no forma parte del objeto experimental de este PR.
 
-C02 v0.4-candidate es normativamente autosuficiente. C03, C04, `AUTH_GATE`, `PUERTO-CERTERO-001`, EX-02, PR-001, MLT-CON-001 y R-CAN-001/003 no son dependencias de admisión, congelamiento o ejecución salvo incorporación primaria, hasheada y admitida antes del congelamiento.
+C02 v0.4.1-candidate es el paquete normativo integrado propuesto. Conserva v0.4-candidate como antecedente y añade R-REF-001 y R-VIG-001 sin declararlas admitidas. C03, C04, `AUTH_GATE`, `PUERTO-CERTERO-001`, EX-02, PR-001, MLT-CON-001 y R-CAN-001/003 no son dependencias de admisión, congelamiento o ejecución salvo incorporación primaria, hasheada y admitida antes del congelamiento.
 
 ## Objetivo propuesto
 
@@ -19,7 +19,10 @@ Evaluar la cadena:
 ## Referentes internos
 
 - `preregister/preregister-v0.3.md`: versión histórica conservada; no vigente.
-- `preregister/preregister-v0.4-candidate.md`: candidata normativa; pendiente de admisión humana.
+- `preregister/preregister-v0.4-candidate.md`: candidata anterior conservada; no vigente.
+- `preregister/preregister-v0.4.1-candidate.md`: índice del paquete integrado; pendiente de admisión humana.
+- `preregister/clauses/R-REF-001.md`: condición de refutación propuesta.
+- `preregister/clauses/R-VIG-001.md`: vigencia condicionada propuesta.
 - `PROVENANCE-MATRIX.md`: procedencia y disposición de archivos.
 - `CLEAN-RESTART.md`: puertas G0–G5 para reanudar.
 - `executor-package/`: material destinado al Ejecutor después del congelamiento.
@@ -29,20 +32,21 @@ Evaluar la cadena:
 
 ## Secuencia autorizable
 
-1. Admitir o modificar la candidata normativa.
-2. Designar tres identidades incompatibles: Ejecutor, Evaluador y Operador.
-3. Materializar corpus y oráculo por separado.
-4. Calcular hashes completos.
-5. Firmar y congelar.
-6. Ejecutar R0 sin modificar criterios.
-7. Sellar output y log.
-8. Evaluar los cuatro ejes separadamente.
-9. Si se activa el Pilar 3, aplicar como máximo R1 y R2.
-10. Emitir cierre humano; no promover automáticamente reglas.
+1. Emitir dictamen de evaluabilidad sobre v0.4.1-candidate.
+2. Admitir, modificar o rechazar el paquete exacto.
+3. Designar tres identidades incompatibles: Ejecutor, Evaluador y Operador.
+4. Materializar corpus y oráculo por separado.
+5. Calcular hashes completos.
+6. Firmar y congelar.
+7. Ejecutar R0 sin modificar criterios.
+8. Sellar output y log.
+9. Evaluar los cuatro ejes separadamente.
+10. Si se activa el Pilar 3, aplicar como máximo R1 y R2.
+11. Emitir cierre humano; no promover automáticamente reglas.
 
 ## Bloqueos actuales
 
-- La candidata v0.4 no tiene admisión ni firma humana.
+- La candidata integrada v0.4.1 no tiene dictamen de evaluabilidad, admisión ni firma humana.
 - No se han designado los tres roles.
 - El corpus y el oráculo no están materializados y sellados.
 - No existe output de ejecución.
