@@ -77,5 +77,21 @@ class C02Tests(unittest.TestCase):
         C02.validate_output(path)
 
 
+    def test_integrated_normative_candidate_is_present_and_non_executable(self) -> None:
+        experiment_root = MODULE_PATH.parents[1]
+        preregister = experiment_root / "preregister"
+        integration = (preregister / "preregister-v0.4.1-candidate.md").read_text(encoding="utf-8")
+        refutation = (preregister / "clauses" / "R-REF-001.md").read_text(encoding="utf-8")
+        validity = (preregister / "clauses" / "R-VIG-001.md").read_text(encoding="utf-8")
+
+        self.assertIn("PROPUESTA INTEGRADA / PENDIENTE DE ADMISIÓN", integration)
+        self.assertIn("NO CONGELADA / NO EJECUTABLE", integration)
+        self.assertIn("ADMISIBLE + VERIFICABLE + FALLA_TÉCNICA", refutation)
+        self.assertIn("REFUTADA_EN_RECONSTRUCCIÓN", refutation)
+        self.assertIn("dictamen firmado", validity)
+        self.assertIn("Operador no tiene veto", validity)
+        self.assertIn("una V3 suspendida nunca recupera vigencia", validity)
+
+
 if __name__ == "__main__":
     unittest.main()
