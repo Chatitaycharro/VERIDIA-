@@ -49,3 +49,40 @@ La autoridad humana debe emitir una de estas decisiones sobre el referente compl
 - `RECHAZAR`.
 
 Solo `ADMITIR` habilita G2 como cerrado. Incluso entonces permanecen pendientes los artefactos, hashes, designación de roles y firma de congelamiento de G3/G4.
+
+
+## Integración posterior — v0.4.1-candidate
+
+Fecha de integración material: 2026-09-28  
+Autorización de trabajo: mensaje humano “Resuelve”.  
+Alcance: materializar y verificar la propuesta; **no equivale a admisión, congelamiento, ejecución ni resultado**.
+
+### Artefactos incorporados
+
+- `preregister/preregister-v0.4.1-candidate.md`: índice normativo del paquete.
+- `preregister/clauses/R-REF-001.md`: condición de refutación.
+- `preregister/clauses/R-VIG-001.md`: vigencia condicionada.
+
+La v0.4-candidate anterior permanece conservada.
+
+### Ajustes cruzados aplicados
+
+1. V1 se activa por acto del Operador después del dictamen de evaluabilidad del Evaluador.
+2. Una versión nueva solo supersede al ser admitida.
+3. Suspender V1 suspende cualquier V3 activa.
+4. Una V3 suspendida requiere nueva autorización; no se reactiva.
+5. La clasificación y corrección de V4 pertenecen al Evaluador; el Operador acusa recepción y no posee veto.
+
+### Estado resultante
+
+`PROPUESTA INTEGRADA / PENDIENTE DE ADMISIÓN / NO CONGELADA / NO EJECUTABLE`
+
+### Próxima decisión humana
+
+Sobre el paquete exacto v0.4.1-candidate:
+
+- `ADMITIR`;
+- `MODIFICAR`, indicando cláusulas;
+- `RECHAZAR`.
+
+Antes de `ADMITIR`, el Evaluador debe emitir un dictamen de evaluabilidad sobre el objeto identificado por commit y hashes.
