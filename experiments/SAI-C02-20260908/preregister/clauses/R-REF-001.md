@@ -122,7 +122,7 @@ Una segunda `NO_ADMISIBLE` o `FALLA_DE_INTEGRIDAD` en la misma etapa —Rx-A2 ta
 Una vez sellado el output, no pueden modificarse los criterios ni sus definiciones. El Evaluador clasifica la corrida después de conocer el output, aplicando exclusivamente las reglas congeladas.
 
 - **Error clerical:** transcripción o referencia que no afecta la clasificación. Se añade acta correctiva y el resultado permanece.
-- **Error de aplicación:** una regla congelada fue aplicada de forma demostrablemente incorrecta. Puede corregirse la clasificación mediante acta firmada por Evaluador y Operador, conservando el acta original y marcándola `SUPERSEDIDA_POR_CORRECCIÓN_MATERIAL`.
+- **Error de aplicación:** una regla congelada fue aplicada de forma demostrablemente incorrecta. Puede corregirse la clasificación mediante acta firmada por el Evaluador. El Operador acusa recepción y puede registrar discrepancia, pero no tiene poder de veto. Se conserva el acta original y se marca `SUPERSEDIDA_POR_CORRECCIÓN_MATERIAL`.
 - **Reinterpretación sustantiva:** cambia el significado o alcance de una regla. No corrige la corrida. Obliga a nueva versión y nuevo ciclo de admisión.
 
 No se admiten excepciones sobre R0, R1 ni R2 fuera de estos tres casos.
