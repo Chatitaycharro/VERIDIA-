@@ -1,0 +1,3 @@
+id,timestamp,measurement,value,unit,quality
+ID-03,2026-09-05T14:28:00,temp_bomba_secundaria,82,C,no_validada
+ID-03,2026-09-05T14:31:00,temp_bomba_secundaria,68,C,no_validada

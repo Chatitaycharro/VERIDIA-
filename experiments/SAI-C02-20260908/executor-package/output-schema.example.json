@@ -1,0 +1,74 @@
+{
+  "run_id": "SAI-C02-20260908",
+  "input_manifest_sha256": "<64 hex>",
+  "evidence": [
+    {
+      "id": "ID-01",
+      "summary": "...",
+      "source_pointer": "corpus/ID-01.md"
+    }
+  ],
+  "context": [
+    {
+      "id": "ID-04",
+      "summary": "...",
+      "source_pointer": "corpus/ID-04.md"
+    }
+  ],
+  "inferences": [
+    {
+      "id": "INF-01",
+      "premises": [
+        "ID-02",
+        "ID-03"
+      ],
+      "claim": "...",
+      "alternatives": [
+        "..."
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "UNC-01",
+      "related_ids": [
+        "ID-01",
+        "ID-05"
+      ],
+      "description": "..."
+    }
+  ],
+  "operational_decision": {
+    "state": "GO|NO_GO|NO_AUTORIZABLE",
+    "basis": [
+      "..."
+    ],
+    "unlock_conditions": [
+      "..."
+    ]
+  },
+  "c03": {
+    "system_result": "EXITO|FALLA|INVALIDA_NO_CONCLUYENTE",
+    "process_integrity": "ADMISIBLE|NO_ADMISIBLE",
+    "case_state": "VERIFICADO|REFUTADO|PENDIENTE|NO_APLICA"
+  },
+  "correction_plan": {
+    "trigger": "...",
+    "affected_claims": [
+      "..."
+    ],
+    "history_preservation": true
+  },
+  "reverse_trace": [
+    {
+      "decision_element": "...",
+      "rule": "...",
+      "inference_ids": [
+        "INF-01"
+      ],
+      "source_ids": [
+        "ID-01"
+      ]
+    }
+  ]
+}
