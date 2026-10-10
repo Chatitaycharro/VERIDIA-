@@ -1,4 +1,4 @@
-"""Regression tests prepared for review; not executed."""
+"""Regression coverage for manifest integrity and structural contracts."""
 import importlib.util
 import json
 import tempfile
@@ -83,6 +83,42 @@ class RegressionTests(unittest.TestCase):
         auth["operator_signature"] = "<pending>"
         with self.assertRaises(ValueError):
             self.check(auth)
+
+
+    def test_nested_manifest_is_covered_and_tampering_detected(self):
+        nested = C02.PACKAGE / "nested" / "MANIFEST.sha256"
+        nested.parent.mkdir()
+        nested.write_text("nested data", encoding="utf-8")
+        manifest = C02.write_manifest()
+        self.assertIn("nested/MANIFEST.sha256", manifest.read_text(encoding="utf-8"))
+        C02.verify_manifest()
+        nested.write_text("tampered", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "hash discordante"):
+            C02.verify_manifest()
+
+    def test_non_string_states_are_blocked_without_type_error(self):
+        output = {
+            "run_id": "SAI-C02-20260908",
+            "input_manifest_sha256": C02.verify_manifest(),
+            "evidence": [], "inferences": [], "uncertainties": [],
+            "reverse_trace": [],
+            "operational_decision": {"state": "NO_AUTORIZABLE"},
+            "c03": {"system_result": "ÉXITO_TÉCNICO",
+                    "process_integrity": "ADMISIBLE", "case_state": "PENDIENTE"},
+            "correction_plan": {"history_preservation": True},
+        }
+        path = Path(self.tmp.name) / "output.json"
+        for container, key in (("c03", "system_result"),
+                               ("c03", "process_integrity"),
+                               ("c03", "case_state"),
+                               ("operational_decision", "state")):
+            for invalid_state in ([], {}, None, 1):
+                with self.subTest(container=container, key=key, value=invalid_state):
+                    candidate = json.loads(json.dumps(output))
+                    candidate[container][key] = invalid_state
+                    path.write_text(json.dumps(candidate), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "inválido"):
+                        C02.validate_output(path)
 
 
 if __name__ == "__main__":
