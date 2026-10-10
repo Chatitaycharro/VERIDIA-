@@ -48,7 +48,7 @@
     ]
   },
   "c03": {
-    "system_result": "EXITO|FALLA|INVALIDA_NO_CONCLUYENTE",
+    "system_result": "ÉXITO_TÉCNICO|FALLA_TÉCNICA|NO_EJECUTADO|INVÁLIDA_NO_CONCLUYENTE",
     "process_integrity": "ADMISIBLE|NO_ADMISIBLE",
     "case_state": "VERIFICADO|REFUTADO|PENDIENTE|NO_APLICA"
   },
