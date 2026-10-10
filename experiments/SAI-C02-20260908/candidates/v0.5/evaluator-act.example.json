@@ -1,0 +1,22 @@
+{
+  "contract_version": "SAI-C02-v0.5-candidate",
+  "run_id": "SAI-C02-20260908",
+  "stage": "R0",
+  "attempt": "A1",
+  "process_integrity": "<ADMISIBLE|NO_ADMISIBLE>",
+  "artifact_integrity": "<VERIFICABLE|FALLA_DE_INTEGRIDAD>",
+  "technical_result": "<ÉXITO_TÉCNICO|FALLA_TÉCNICA|NO_EVALUABLE>",
+  "case_state": "<VERIFICADO|REFUTADO|PENDIENTE|NO_APLICA>",
+  "artifact_references": {
+    "preregistration_sha256": "<64 hex>",
+    "output_sha256": "<64 hex>",
+    "log_sha256": "<64 hex>",
+    "executor_manifest_sha256": "<64 hex>",
+    "oracle_manifest_sha256": "<64 hex>",
+    "plan_sha256": "<64 hex>"
+  },
+  "findings": [],
+  "evaluator_identity": "<identidad>",
+  "signature_reference": "<referencia verificable>",
+  "operator_receipt": "<referencia o ACUSE_PENDIENTE|ACUSE_RECHAZADO>"
+}
