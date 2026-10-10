@@ -31,7 +31,7 @@ def sha256_file(path: Path) -> str:
 def package_files() -> list[Path]:
     return sorted(
         p for p in PACKAGE.rglob("*")
-        if p.is_file() and p.name != "MANIFEST.sha256"
+        if p.is_file() and p != PACKAGE / "MANIFEST.sha256"
     )
 
 
@@ -146,9 +146,10 @@ def validate_output(path: Path) -> None:
         "case_state": {"VERIFICADO", "REFUTADO", "PENDIENTE", "NO_APLICA"},
     }
     for key, values in allowed.items():
-        if c03.get(key) not in values:
+        if not isinstance(c03.get(key), str) or c03.get(key) not in values:
             raise ValueError(f"c03.{key} inválido")
-    if data["operational_decision"].get("state") not in {"GO", "NO_GO", "NO_AUTORIZABLE"}:
+    decision_state = data["operational_decision"].get("state")
+    if not isinstance(decision_state, str) or decision_state not in {"GO", "NO_GO", "NO_AUTORIZABLE"}:
         raise ValueError("operational_decision.state inválido")
     if data["correction_plan"].get("history_preservation") is not True:
         raise ValueError("correction_plan debe preservar historial")
