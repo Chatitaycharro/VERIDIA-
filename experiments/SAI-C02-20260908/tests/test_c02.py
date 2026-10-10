@@ -48,7 +48,10 @@ class C02Tests(unittest.TestCase):
             "evaluator": "misma persona",
             "authorized_at": "2026-09-14T09:00:00-06:00",
             "authorization": "AUTHORIZED_TO_RUN",
-            "human_signature": "firma",
+            "operator_authorizer": "operador distinto",
+            "evaluator_signature": "referencia evaluador",
+            "operator_signature": "referencia operador",
+            "role_exclusion_attestation": "EXECUTOR_NE_EVALUATOR_NE_OPERATOR",
         }
         path = Path(self.tmp.name) / "auth.json"
         path.write_text(json.dumps(auth), encoding="utf-8")
@@ -65,7 +68,7 @@ class C02Tests(unittest.TestCase):
             "uncertainties": [],
             "operational_decision": {"state": "NO_AUTORIZABLE"},
             "c03": {
-                "system_result": "EXITO",
+                "system_result": "ÉXITO_TÉCNICO",
                 "process_integrity": "ADMISIBLE",
                 "case_state": "PENDIENTE",
             },
@@ -74,7 +77,27 @@ class C02Tests(unittest.TestCase):
         }
         path = Path(self.tmp.name) / "output.json"
         path.write_text(json.dumps(output), encoding="utf-8")
-        C02.validate_output(path)
+        for state in ("ÉXITO_TÉCNICO", "FALLA_TÉCNICA", "NO_EJECUTADO",
+                      "INVÁLIDA_NO_CONCLUYENTE"):
+            with self.subTest(state=state):
+                output["c03"]["system_result"] = state
+                path.write_text(json.dumps(output), encoding="utf-8")
+                C02.validate_output(path)
+        for state in ("EXITO", "FALLA", "INVALIDA_NO_CONCLUYENTE"):
+            with self.subTest(legacy_state=state):
+                output["c03"]["system_result"] = state
+                path.write_text(json.dumps(output), encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "system_result inválido"):
+                    C02.validate_output(path)
+        output["c03"]["system_result"] = "ÉXITO_TÉCNICO"
+        for field in ("evidence", "inferences", "uncertainties", "reverse_trace",
+                      "c03", "operational_decision", "correction_plan"):
+            with self.subTest(invalid_container=field):
+                invalid = dict(output)
+                invalid[field] = None
+                path.write_text(json.dumps(invalid), encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "debe ser"):
+                    C02.validate_output(path)
 
 
     def test_integrated_normative_candidate_is_present_and_non_executable(self) -> None:
