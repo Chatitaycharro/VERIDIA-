@@ -1,7 +1,7 @@
 # Corrección propuesta de SAI-C02
 
 Fuente: Chatitaycharro/VERIDIA-, commit 4e93b40b8a5e898cae0595f07a653e7a507589a2.
-Estado: propuesta local, sin ejecución ni publicación.
+Estado: propuesta publicada en el PR #8, en borrador y sin fusión.
 
 Cambios:
 - Rechaza manifiestos vacíos, duplicados, rutas externas y archivos no listados.
@@ -12,9 +12,11 @@ Cambios:
 - La salida de check-gate declara validación estructural, sin acreditar autenticidad.
 
 Pruebas preparadas en tests/test_regressions.py; no ejecutadas.
-Los tests originales deben actualizarse al contrato nuevo antes de integrar.
-Este directorio es una propuesta parcial y no contiene el corpus ni los restantes
-artefactos del repositorio; no constituye un paquete ejecutable completo.
+Los tests originales y el ejemplo de salida están adaptados al nuevo contrato.
+Se añadieron casos de estados normativos, estados antiguos y tipos inválidos.
+No se ejecutaron pruebas localmente ni se solicitaron ejecuciones de workflows.
+El workflow existente puede ejecutarse automáticamente al publicar cambios;
+sus resultados deben consultarse por separado y no equivalen a una corrida C02.
 
 Límites pendientes:
 - No autentica identidades ni firmas: compara valores declarados.
