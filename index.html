@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veridia</title>
+<style>
+body{font-family:system-ui,Arial,sans-serif;background:#f7f5ef;color:#222;max-width:760px;margin:0 auto;padding:48px 24px;line-height:1.6}
+h1{font-size:3rem;margin-bottom:.2rem}
+button{padding:14px 22px;border:0;border-radius:999px;background:#1f4f3a;color:#fff;font-size:1rem;cursor:pointer}
+a{display:inline-block;margin-left:12px}
+</style>
+</head>
+<body>
+<h1>Veridia</h1>
+<p><strong>No es un prompt. Es una costumbre.</strong></p>
+<p>Antes de empezar una conversación importante con una IA, empieza con Veridia.</p>
+<button onclick="copiar()">Copiar Veridia</button>
+<a href="veridia.txt">Ver texto completo</a>
+<p id="msg"></p>
+<script>
+async function copiar(){
+ const t=await fetch("veridia.txt").then(r=>r.text());
+ await navigator.clipboard.writeText(t);
+ document.getElementById("msg").textContent="Veridia copiado al portapapeles.";
+}
+</script>
+</body>
+</html>
